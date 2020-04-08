@@ -1,0 +1,23 @@
+@import '../../../scss/variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap');
+
+.dropDown {
+  i {
+    margin: 0px !important;
+    color: $lightBlack !important;
+  }
+}
+
+.userIcon {
+  border: 2px solid rgba($lightBlack, 0.6) !important;
+}
+
+.dropDownMenu {
+  border: 0px !important;
+  box-shadow: $boxShadow !important;
+}
+.dropDownMenuItem {
+  span {
+    font-family: 'Nanum Gothic', sans-serif !important;
+  }
+}

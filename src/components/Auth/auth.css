@@ -1,0 +1,55 @@
+.custom-social-auth-text {
+	margin: auto !important;
+	padding: 0px !important;
+	color: #fff !important;
+	font-size: small !important;
+	padding: 0.5em 0px 0.5em 0px !important;
+}
+
+.custom-or-button {
+	margin: auto !important;
+}
+
+.google-color {
+	background-color: #db4437 !important;
+}
+
+.facebook-color {
+	background-color: #3b5998 !important;
+}
+
+.google-font-color {
+	color: #db4437 !important;
+}
+
+.facebook-font-color {
+	color: #3b5998 !important;
+}
+
+.custom-bottom-text {
+	text-align: center !important;
+	padding: 16px !important;
+}
+
+.custom-social-auth-popup-link {
+	padding: 0.4em !important;
+	font-weight: 500 !important;
+}
+
+.custom-auth-btn {
+	background-color: #181347 !important;
+}
+
+.l-signin-button {
+	border: 1px solid #00a8ff !important;
+	box-shadow: none !important;
+	border-radius: 0% !important;
+}
+
+.l-signin-icon {
+	color: #00a8ff !important;
+}
+
+.l-signin-text {
+	color: #00a8ff !important;
+}

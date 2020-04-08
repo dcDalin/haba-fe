@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+.dashHeading {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-size: larger !important;
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  color: $purple !important;
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+}
+
+.dashSubHeading {
+  font-weight: 100 !important;
+  font-size: small !important;
+  letter-spacing: 0.05em !important;
+  color: $lightBlack !important;
+  text-transform: uppercase !important;
+}

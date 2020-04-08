@@ -1,0 +1,33 @@
+@import '../scss/variables.scss';
+@import '../scss/form.scss';
+@import '../scss/button.scss';
+
+.habaValue {
+  width: 4em !important;
+  margin: auto !important;
+  text-align: center !important;
+}
+.habaValueError {
+  font-size: 12px !important;
+  text-transform: initial !important;
+  color: #9f3a38;
+}
+
+.noMargin {
+  margin: 5px !important;
+}
+
+.info {
+  float: right !important;
+}
+
+.habaAmountLabel {
+  cursor: pointer !important;
+  border: 0px !important;
+  box-shadow: $boxShadow !important;
+}
+
+.active {
+  background-color: #16a085 !important;
+  color: #ecf0f1 !important;
+}

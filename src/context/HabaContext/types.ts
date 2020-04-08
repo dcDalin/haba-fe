@@ -1,0 +1,9 @@
+export const FEED_LOADING = 'FEED_LOADING';
+export const FEED_LOADED = 'FEED_LOADED';
+export const FEED_ERROR = 'FEED_ERROR';
+export const STK_PUSH = 'STK_PUSH';
+export const SHOW_ERROR = 'SHOW_ERROR';
+export const START_LOADING = 'START_LOADING';
+export const STOP_LOADING = 'STOP_LOADING';
+export const SHOW_MESSAGE = 'SHOW_MESSAGE';
+export const RESET_STATE = 'RESET_STATE';

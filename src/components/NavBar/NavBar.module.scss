@@ -1,0 +1,83 @@
+@import '../../scss/variables.scss';
+
+.menu {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-size: larger !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: $boxShadow !important;
+  padding: 0px !important;
+  margin: 0px !important;
+  background-color: rgba(white, 0.9) !important;
+}
+
+.menuItem {
+  margin: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border: 2px solid transparent !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.menuItemItem {
+  transition: linear !important;
+  color: $primary-color !important;
+  &:hover {
+    border-bottom: 2px solid $pink !important;
+  }
+}
+.active {
+  border-bottom: 2px solid $pink !important;
+  font-weight: bold !important;
+}
+
+.mNavWrapper {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.logoWrapper {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.logoText {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: larger !important;
+  color: $primary-color !important;
+}
+
+.footerMenu {
+  border: 0px !important;
+  box-shadow: $boxShadow !important;
+  .icon {
+    color: rgba($lightBlack, 0.8) !important;
+  }
+  background-color: rgba(white, 0.8) !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.mobileMenu {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  box-shadow: $boxShadow !important;
+  padding: 0px !important;
+  margin: 0px !important;
+  background-color: rgba(white, 0.95) !important;
+}
+
+.bNav {
+  font-weight: normal !important;
+}
+.bNavActive {
+  color: $pink !important;
+  font-weight: bold !important;
+  background-color: transparent !important;
+  .icon {
+    color: $pink !important;
+  }
+}
