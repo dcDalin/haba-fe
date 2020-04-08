@@ -1,0 +1,31 @@
+@import '../../scss//variables.scss';
+@import '../../scss//headers.scss';
+
+.statWrapper {
+  box-shadow: $boxShadow !important;
+  background-color: rgba($border, 0.3) !important;
+  padding: 2em !important;
+}
+
+.statText {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-size: 0.5em !important;
+  font-weight: 700 !important;
+  color: $purple !important;
+}
+
+.label {
+  color: rgba($lightBlack, 0.5) !important;
+}
+
+.table {
+  border: 0px !important;
+  box-shadow: $boxShadow !important;
+  background-color: rgba($border, 0.3) !important;
+}
+
+@media only screen and (max-width: 766px) {
+  .statWrapper {
+    padding: 1em !important;
+  }
+}

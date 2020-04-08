@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+.authButton {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  background-color: $pink !important;
+  color: $white !important;
+  font-weight: 700 !important;
+}
+
+.customSuccessButton {
+  color: #ecf0f1 !important;
+  font-weight: 800 !important;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px !important;
+  border-radius: 20px !important;
+  opacity: 0.8;
+  width: 100% !important;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.customAuthBtn {
+  background-color: #181347 !important;
+}

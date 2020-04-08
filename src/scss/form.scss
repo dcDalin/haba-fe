@@ -1,0 +1,50 @@
+@import './variables.scss';
+
+.customFormTitle {
+  font-size: 20px !important;
+  font-weight: 100;
+  color: $purple !important;
+  text-align: center !important;
+}
+
+.customCard {
+  border-radius: 2px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Form */
+.customForm {
+  text-align: left;
+}
+.customForm input {
+  background-color: none !important;
+}
+.customForm label {
+  font-weight: 500 !important;
+}
+
+.customFormInput {
+  margin-top: 16px !important;
+  margin-bottom: 0px !important;
+}
+.customForm p {
+  padding: 1px 0px 0px 1em !important;
+  font-size: 12px;
+  margin: 0 !important;
+  color: #9f3a38;
+}
+
+.customBottomText {
+  text-align: center !important;
+  padding: 16px !important;
+}
+
+.dashForm {
+  width: 50% !important;
+}
+
+@media only screen and (max-width: 766px) {
+  .dashForm {
+    width: 100% !important;
+  }
+}

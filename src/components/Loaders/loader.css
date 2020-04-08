@@ -1,0 +1,14 @@
+.custom-spinner-wrapper {
+  height: 100%;
+  width: 100%;
+}
+.custom-loading-spinner {
+  position: fixed !important;
+  z-index: 999 !important;
+  overflow: show !important;
+  margin: auto !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
