@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
-import React, { createRef } from 'react';
-import { Grid, Ref, Sticky, Responsive, Tab } from 'semantic-ui-react';
+import React, { createRef, useContext, useState } from 'react';
+import { Grid, Ref, Sticky, Responsive, Tab, Button } from 'semantic-ui-react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { USER_PROFILE } from '../../GraphQl/Queries/Auth';
@@ -11,9 +11,12 @@ import SingleHaba from '../../Forms/SingleHaba';
 import FullPageLoader from '../../components/Loaders/fullPageLoader';
 import getWidth from '../../utils/getWidth';
 import styles from './Profile.module.scss';
+import AuthContext from '../../context/AuthContext/authContext';
 
 const Profile: React.FC = () => {
   const { userName }: any = useParams();
+
+  const { user }: any = useContext(AuthContext);
 
   const { loading, error, data } = useQuery(USER_PROFILE, {
     variables: { userName },
@@ -25,7 +28,11 @@ const Profile: React.FC = () => {
 
   if (error) return <p>User profile not found</p>;
 
+  // Get user id from USER_PROFILE query
   const { id } = data.user_profile.user;
+
+  // Get id from logged in user context
+  const authId = user.id;
 
   const panes = [
     {
@@ -50,7 +57,7 @@ const Profile: React.FC = () => {
     <HabaState>
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} as={Grid} columns={2}>
         <Grid.Row>
-          <TopProfile data={data} />
+          <TopProfile data={data} authId={authId} />
         </Grid.Row>
         <Ref innerRef={contextRef}>
           <Grid.Row>
@@ -66,7 +73,7 @@ const Profile: React.FC = () => {
         </Ref>
       </Responsive>
       <Responsive getWidth={getWidth} maxWidth={Responsive.onlyMobile.maxWidth}>
-        <TopProfile data={data} />
+        <TopProfile data={data} authId={authId} />
         <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
       </Responsive>
     </HabaState>

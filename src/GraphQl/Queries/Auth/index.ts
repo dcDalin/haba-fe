@@ -40,6 +40,7 @@ const USER_PROFILE = gql`
         id
         userName
         displayName
+        bio
       }
     }
   }

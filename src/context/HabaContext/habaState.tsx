@@ -100,11 +100,19 @@ const AuthState: React.FC = (props: HabaStateProps) => {
         dispatch({
           type: RESET_STATE,
         });
+      } else {
+        console.log('Res data cancelled is: ', res.data);
+        dispatch({
+          type: STOP_LOADING,
+        });
+        dispatch({
+          type: SHOW_ERROR,
+          payload: 'Sorry, something went wrong. Please try again.',
+        });
+        dispatch({
+          type: RESET_STATE,
+        });
       }
-      console.log('Res data cancelled is: ', res.data);
-      dispatch({
-        type: STOP_LOADING,
-      });
     } catch (err) {
       console.log('Error is: ', err);
       dispatch({

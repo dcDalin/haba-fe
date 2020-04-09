@@ -1,3 +1,5 @@
+@import '../../scss/variables.scss';
+
 .wrapper {
   padding: 2em !important;
 }
@@ -6,4 +8,38 @@
   position: relative !important;
   border: 2px solid red !important;
   bottom: 0 !important;
+}
+
+.userName {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-size: larger !important;
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  color: $purple !important;
+  margin: 0px !important;
+  padding: 2px !important;
+}
+
+.leftWrap {
+  text-align: center !important;
+  margin: auto !important;
+}
+
+.profileImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bio {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  padding: 1em;
+  font-size: larger;
+}
+
+@media only screen and (max-width: 766px) {
+  .bio {
+    padding: 0px !important;
+    font-size: small !important;
+  }
 }

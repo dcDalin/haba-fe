@@ -40,19 +40,7 @@ const DesktopLoggedOutNavBar: React.FC<Props> = (props: Props) => {
           >
             FAQ
           </Menu.Item>
-          <Menu.Item
-            as={Link}
-            to={routes.EARNINGS}
-            name="earnings"
-            className={
-              activeItem === 'earnings'
-                ? `${styles.menuItem} ${styles.menuItemItem} ${styles.active}`
-                : `${styles.menuItem} ${styles.menuItemItem}`
-            }
-            onClick={handleItemClick}
-          >
-            Earnings
-          </Menu.Item>
+
           <Menu.Item className={styles.menuItem}>
             <UserAvatarDropdown />
           </Menu.Item>

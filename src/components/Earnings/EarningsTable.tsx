@@ -19,10 +19,14 @@ const EarningsTable: React.FC<Props> = (props: Props) => {
       <Table.Row key={post.id}>
         <Table.Cell>{post.date}</Table.Cell>
         <Table.Cell>{post.transactionType}</Table.Cell>
-        <Table.Cell>{currency.format(post.amount)}</Table.Cell>
-        <Table.Cell>{currency.format(post.serviceFee)}</Table.Cell>
+        <Table.Cell style={{ opacity: '0.5' }}>- {currency.format(post.serviceFee)}</Table.Cell>
+        <Table.Cell textAlign="right" style={{ fontWeight: 'bold' }}>
+          {currency.format(post.amount)}
+        </Table.Cell>
 
-        <Table.Cell textAlign="right">{currency.format(post.balance)}</Table.Cell>
+        <Table.Cell textAlign="right" style={{ fontWeight: 'bold' }}>
+          {currency.format(post.balance)}
+        </Table.Cell>
       </Table.Row>
     ));
   } else {
@@ -41,9 +45,9 @@ const EarningsTable: React.FC<Props> = (props: Props) => {
               <Table.Row>
                 <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Transaction Type</Table.HeaderCell>
-                <Table.HeaderCell>Amount</Table.HeaderCell>
 
                 <Table.HeaderCell>Service Fee</Table.HeaderCell>
+                <Table.HeaderCell textAlign="right">Amount</Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">Balance</Table.HeaderCell>
               </Table.Row>
             </Table.Header>

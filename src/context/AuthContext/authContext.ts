@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext } from 'react';
+import { jwtTitle } from '../../constants';
 
 const AuthContext = createContext({
-  token: null,
+  token: localStorage.getItem(jwtTitle),
   isAuthenticated: false,
   loading: true,
   user: null,
