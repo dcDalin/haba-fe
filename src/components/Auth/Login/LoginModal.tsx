@@ -60,6 +60,7 @@ const LoginModal: React.FC<Props> = (props: Props) => {
     update(_, { data }) {
       setToken(data.user_signIn.token);
       props.history.push('/');
+      closeLoginModal();
     },
     onError(err) {
       setGenErr(err.graphQLErrors[0].message);

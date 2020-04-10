@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useState, useContext, useEffect } from 'react';
 import { Segment, Button, Form, Checkbox, Statistic, Label, Popup } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
@@ -25,7 +26,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
   const { stkPush, loading, error, toastMsg } = useContext(HabaContext);
 
   const { register, handleSubmit, errors } = useForm<FormData>();
-  const [amount, setAmount] = useState(50);
+  const [amount, setAmount] = useState(100);
   const [isPrivate, setIsPrivate] = useState(false);
 
   const onSubmit = (data: any): any => {
@@ -74,16 +75,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)} loading={loading} className={styles.customForm}>
           <Form.Field>
             <label>Do a Haba</label>
-            <Label
-              circular
-              basic
-              size="big"
-              value="50"
-              onClick={handleClick}
-              className={amount == 50 ? `${styles.active} ${styles.habaAmountLabel}` : `${styles.habaAmountLabel}`}
-            >
-              50
-            </Label>
+
             <Label
               circular
               basic

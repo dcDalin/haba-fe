@@ -32,7 +32,9 @@ const Profile: React.FC = () => {
   const { id } = data.user_profile.user;
 
   // Get id from logged in user context
-  const authId = user.id;
+  // When user is loggeed out, user from context is null
+  // check if use is not null or undefined, else set it to null
+  const auth = user ?? { user: { id: null } };
 
   const panes = [
     {
@@ -57,7 +59,7 @@ const Profile: React.FC = () => {
     <HabaState>
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} as={Grid} columns={2}>
         <Grid.Row>
-          <TopProfile data={data} authId={authId} />
+          <TopProfile data={data} authId={auth.id} />
         </Grid.Row>
         <Ref innerRef={contextRef}>
           <Grid.Row>
@@ -73,7 +75,7 @@ const Profile: React.FC = () => {
         </Ref>
       </Responsive>
       <Responsive getWidth={getWidth} maxWidth={Responsive.onlyMobile.maxWidth}>
-        <TopProfile data={data} authId={authId} />
+        <TopProfile data={data} authId={auth.id} />
         <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
       </Responsive>
     </HabaState>
