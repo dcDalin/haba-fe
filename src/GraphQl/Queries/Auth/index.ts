@@ -6,7 +6,7 @@ const WHO_IS_ME = gql`
       id
       userName
       displayName
-      email
+      phoneNumber
     }
   }
 `;
@@ -21,9 +21,9 @@ const SEARCH_USERS = gql`
   }
 `;
 
-const CHECK_EMAIL_EXISTS = gql`
-  query User_userEmailExists($email: String!) {
-    user_userEmailExists(email: $email)
+const CHECK_PHONE_NUMBER_EXISTS = gql`
+  query User_userPhoneNumberExists($phoneNumber: String!) {
+    user_userPhoneNumberExists(phoneNumber: $phoneNumber)
   }
 `;
 
@@ -64,4 +64,4 @@ const USER_HABAS = gql`
   }
 `;
 
-export { WHO_IS_ME, SEARCH_USERS, CHECK_EMAIL_EXISTS, CHECK_USERNAME_EXISTS, USER_PROFILE, USER_HABAS };
+export { WHO_IS_ME, SEARCH_USERS, CHECK_PHONE_NUMBER_EXISTS, CHECK_USERNAME_EXISTS, USER_PROFILE, USER_HABAS };

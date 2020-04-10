@@ -16,14 +16,14 @@ interface Props {
 }
 
 type FormData = {
-  email: string;
+  phoneNumber: string;
   password: string;
 };
 
 const LoginModal: React.FC<Props> = (props: Props) => {
   // Get context stuff
   const { setToken, isAuthenticated } = useContext(AuthContext);
-  const { openLoginModal, closeLoginModal, isLoginOpen, openChooseSignupModal } = useContext(AuthModalContext);
+  const { openLoginModal, closeLoginModal, isLoginOpen, openSignUpModal } = useContext(AuthModalContext);
 
   // use form stuff
   const { register, handleSubmit, errors, setValue, triggerValidation } = useForm<FormData>();
@@ -34,10 +34,12 @@ const LoginModal: React.FC<Props> = (props: Props) => {
     }
 
     register(
-      { name: 'email' },
+      { name: 'phoneNumber' },
       {
         required: true,
-        pattern: /\S+@\S+\.\S+/,
+        pattern: /^254/i,
+        minLength: 12,
+        maxLength: 12,
       },
     );
     register(
@@ -65,10 +67,10 @@ const LoginModal: React.FC<Props> = (props: Props) => {
     },
   });
 
-  const onSubmit = handleSubmit(({ email, password }) => {
+  const onSubmit = handleSubmit(({ phoneNumber, password }) => {
     loginUser({
       variables: {
-        email,
+        phoneNumber,
         password,
       },
     });
@@ -98,43 +100,30 @@ const LoginModal: React.FC<Props> = (props: Props) => {
       >
         <Modal.Content>
           <h3 className={styles.customFormTitle}>Login to HabaHaba</h3>
-          <Button
-            className={`${styles.customSuccessButton} ${styles.facebookColor}`}
-            style={{ marginBottom: '10px' }}
-            onClick={(): any => window.open(`${process.env.REACT_APP_HABAHABA_URL}/auth/facebook`, '_self')}
-          >
-            <Icon name="facebook" />
-            Login with Facebook
-          </Button>
-
-          <Button
-            className={`${styles.customSuccessButton} ${styles.googleColor}`}
-            onClick={(): any => window.open(`${process.env.REACT_APP_HABAHABA_URL}/auth/google`, '_self')}
-          >
-            <Icon name="google" />
-            Login with Google
-          </Button>
         </Modal.Content>
         <Modal.Content style={{ textAlign: 'center' }}>
-          <p>or</p>
           {genErr && visible ? <Message error header="Sorry" content={genErr} onDismiss={handleDismiss} /> : null}
 
           <Form loading={loading} className={styles.customForm} noValidate onSubmit={onSubmit}>
             <Form.Input
               className={styles.customFormInput}
-              type="email"
-              label="Email"
+              type="number"
+              label="Phone Number"
               fluid
-              placeholder="Email Address"
-              name="email"
+              placeholder="254---------"
+              name="phoneNumber"
               onChange={async (e, { name, value }): Promise<void> => {
                 setValue(name, value);
                 await triggerValidation(name);
               }}
-              error={!!errors.email}
+              error={!!errors.phoneNumber}
             />
-            {errors.email && errors.email.type === 'required' && <p>Email is required</p>}
-            {errors.email && errors.email.type === 'pattern' && <p>Your email is invalid</p>}
+            {errors.phoneNumber && errors.phoneNumber.type === 'required' && <p>Phone number is required</p>}
+            {errors.phoneNumber && errors.phoneNumber.type === 'pattern' && (
+              <p>Your phone number must start with 254</p>
+            )}
+            {errors.phoneNumber && errors.phoneNumber.type === 'minLength' && <p>Your phone number seems short</p>}
+            {errors.phoneNumber && errors.phoneNumber.type === 'maxLength' && <p>Your phone number is long</p>}
             <Form.Input
               className={styles.customFormInput}
               type="password"
@@ -170,7 +159,7 @@ const LoginModal: React.FC<Props> = (props: Props) => {
 
           <p>
             Do not have an account?
-            <Button onClick={openChooseSignupModal} className={styles.customLinkButton}>
+            <Button onClick={openSignUpModal} className={styles.customLinkButton}>
               &nbsp;Sign up today.
             </Button>
           </p>
