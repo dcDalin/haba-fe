@@ -7,6 +7,7 @@ const WHO_IS_ME = gql`
       userName
       displayName
       phoneNumber
+      profileUrl
     }
   }
 `;
@@ -41,6 +42,7 @@ const USER_PROFILE = gql`
         userName
         displayName
         bio
+        profileUrl
       }
     }
   }

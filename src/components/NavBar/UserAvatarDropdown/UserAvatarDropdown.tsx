@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import AuthContext from '../../../context/AuthContext/authContext';
 import * as routes from '../../../Routes';
 import DropDownTrigger from './DropDownTrigger';
 import styles from './DropDown.module.scss';
@@ -10,13 +9,15 @@ import { useQuery } from '@apollo/react-hooks';
 
 const UserAvatarDropdown: React.FC = () => {
   const { loading, data } = useQuery(WHO_IS_ME);
-  const { userName, displayName } = data.user_me;
-  const url = null;
+  const { userName, displayName, profileUrl } = data.user_me;
 
   const showName = userName ? userName : displayName;
 
   return (
-    <Dropdown trigger={<DropDownTrigger loading={loading} username={showName} />} className={styles.dropDown}>
+    <Dropdown
+      trigger={<DropDownTrigger loading={loading} username={showName} profileUrl={profileUrl} />}
+      className={styles.dropDown}
+    >
       <Dropdown.Menu direction="left" className={styles.dropDownMenu}>
         <Dropdown.Header content={showName} />
         <Dropdown.Item text="Earnings" as={Link} to={routes.EARNINGS} className={styles.dropDownMenuItem} />

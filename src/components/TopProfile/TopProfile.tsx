@@ -10,19 +10,14 @@ interface Props {
 }
 
 const TopProfile: React.FC<Props> = (props: Props) => {
-  const { id, userName, bio } = props.data.user_profile.user;
+  const { id, userName, bio, profileUrl } = props.data.user_profile.user;
   const { authId } = props;
 
   return (
     <Grid className={styles.wrapper} container stackable centered>
       <Grid.Column width={3}>
         <div className={styles.leftWrap}>
-          <Image
-            src="https://i.pinimg.com/originals/be/ac/96/beac96b8e13d2198fd4bb1d5ef56cdcf.jpg"
-            size="small"
-            circular
-            className={styles.profileImage}
-          />
+          <Image src={profileUrl} size="small" circular className={styles.profileImage} />
           <h1 className={styles.userName}>{userName}</h1>
         </div>
       </Grid.Column>

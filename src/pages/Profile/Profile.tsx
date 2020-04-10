@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
-import React, { createRef, useContext, useState } from 'react';
-import { Grid, Ref, Sticky, Responsive, Tab, Button } from 'semantic-ui-react';
+import React, { createRef, useContext } from 'react';
+import { Grid, Ref, Sticky, Responsive, Tab } from 'semantic-ui-react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { USER_PROFILE } from '../../GraphQl/Queries/Auth';
