@@ -16,29 +16,12 @@ const USER_SIGN_IN = gql`
   }
 `;
 
-const UPDATE_PROFILE_PIC = gql`
-  mutation UserUpdateProfilePicture($file: Upload!) {
-    userUpdateProfilePicture(file: $file) {
-      id
-      username
-      displayName
-      phoneNumber {
-        phoneNumber
-        isVerified
-      }
-      profile {
-        picture {
-          public_id
-          url
-        }
-        phone {
-          phoneNumber
-          isVerified
-        }
-        accountType
-      }
-    }
+const UPDATE_PROFILE = gql`
+  mutation User_updateProfile($phoneNumberNew: String!, $bio: String!, $userName: String!, $displayName: String!) {
+    user_updateProfile(
+      userUpdateInput: { phoneNumberNew: $phoneNumberNew, bio: $bio, userName: $userName, displayName: $displayName }
+    )
   }
 `;
 
-export { USER_SIGN_UP, USER_SIGN_IN, UPDATE_PROFILE_PIC };
+export { USER_SIGN_UP, USER_SIGN_IN, UPDATE_PROFILE };
