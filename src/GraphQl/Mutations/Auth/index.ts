@@ -1,16 +1,16 @@
 import gql from 'graphql-tag';
 
 const USER_SIGN_UP = gql`
-  mutation User_signUp($userName: String!, $email: String!, $password: String!) {
-    user_signUp(userSignUpInput: { userName: $userName, email: $email, password: $password }) {
+  mutation User_signUp($userName: String!, $phoneNumber: String!, $password: String!) {
+    user_signUp(userSignUpInput: { userName: $userName, phoneNumber: $phoneNumber, password: $password }) {
       token
     }
   }
 `;
 
 const USER_SIGN_IN = gql`
-  mutation User_signIn($email: String!, $password: String!) {
-    user_signIn(userSignInInput: { email: $email, password: $password }) {
+  mutation User_signIn($phoneNumber: String!, $password: String!) {
+    user_signIn(userSignInInput: { phoneNumber: $phoneNumber, password: $password }) {
       token
     }
   }
@@ -22,8 +22,8 @@ const UPDATE_PROFILE_PIC = gql`
       id
       username
       displayName
-      email {
-        emailAddress
+      phoneNumber {
+        phoneNumber
         isVerified
       }
       profile {

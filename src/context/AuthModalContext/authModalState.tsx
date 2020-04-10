@@ -1,14 +1,7 @@
 import React, { useReducer } from 'react';
 import AuthModalReducer from './authModalReducer';
 import AuthModalContext from './authModalContext';
-import {
-  OPEN_LOGIN_MODAL,
-  CLOSE_LOGIN_MODAL,
-  OPEN_SIGNUP_MODAL,
-  CLOSE_SIGNUP_MODAL,
-  OPEN_CHOOSE_SIGNUP_MODAL,
-  CLOSE_CHOOSE_SIGNUP_MODAL,
-} from './types';
+import { OPEN_LOGIN_MODAL, CLOSE_LOGIN_MODAL, OPEN_SIGNUP_MODAL, CLOSE_SIGNUP_MODAL } from './types';
 
 interface AuthModalStateProps {
   children?: React.ReactNode;
@@ -35,8 +28,6 @@ const AuthModalState: React.FC = (props: AuthModalStateProps) => {
   const closeLoginModal = (): any => dispatch({ type: CLOSE_LOGIN_MODAL });
   const openSignUpModal = (): any => dispatch({ type: OPEN_SIGNUP_MODAL });
   const closeSignUpModal = (): any => dispatch({ type: CLOSE_SIGNUP_MODAL });
-  const openChooseSignupModal = (): any => dispatch({ type: OPEN_CHOOSE_SIGNUP_MODAL });
-  const closeChooseSignUpModal = (): any => dispatch({ type: CLOSE_CHOOSE_SIGNUP_MODAL });
 
   return (
     <AuthModalContext.Provider
@@ -48,8 +39,6 @@ const AuthModalState: React.FC = (props: AuthModalStateProps) => {
         closeLoginModal,
         openSignUpModal,
         closeSignUpModal,
-        openChooseSignupModal,
-        closeChooseSignUpModal,
       }}
     >
       {children}
