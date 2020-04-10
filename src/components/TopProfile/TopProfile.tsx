@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Image, Button, Icon } from 'semantic-ui-react';
 import styles from './TopProfile.module.scss';
+import EditProfileModal from './EditProfileModal';
 
 interface Props {
   data: {
@@ -25,11 +26,7 @@ const TopProfile: React.FC<Props> = (props: Props) => {
         <p className={styles.bio}>{bio}</p>
       </Grid.Column>
       <Grid.Column floated="left" width={3}>
-        {id === authId && (
-          <Button icon basic>
-            <Icon name="edit" />
-          </Button>
-        )}
+        {id === authId && <EditProfileModal />}
       </Grid.Column>
     </Grid>
   );

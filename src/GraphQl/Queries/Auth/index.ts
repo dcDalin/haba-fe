@@ -8,6 +8,7 @@ const WHO_IS_ME = gql`
       displayName
       phoneNumber
       profileUrl
+      bio
     }
   }
 `;
@@ -18,6 +19,7 @@ const SEARCH_USERS = gql`
       id
       userName
       displayName
+      profileUrl
     }
   }
 `;
@@ -48,6 +50,18 @@ const USER_PROFILE = gql`
   }
 `;
 
+const ALLOW_CHANGE_USERNAME = gql`
+  query User_allowChangeUserName($newUserName: String!, $originalUserName: String!) {
+    user_allowChangeUserName(newUserName: $newUserName, originalUserName: $originalUserName)
+  }
+`;
+
+const ALLOW_CHANGE_PHONE_NUMBER = gql`
+  query User_allowChangePhoneNumber($newPhoneNumber: String!, $originalPhoneNumber: String!) {
+    user_allowChangePhoneNumber(newPhoneNumber: $newPhoneNumber, originalPhoneNumber: $originalPhoneNumber)
+  }
+`;
+
 const USER_HABAS = gql`
   query Haba_getUserPayFeed($userName: String!, $cursor: String, $limit: Int) {
     user_profile(userName: $userName, cursor: $cursor, limit: $limit) {
@@ -66,4 +80,13 @@ const USER_HABAS = gql`
   }
 `;
 
-export { WHO_IS_ME, SEARCH_USERS, CHECK_PHONE_NUMBER_EXISTS, CHECK_USERNAME_EXISTS, USER_PROFILE, USER_HABAS };
+export {
+  WHO_IS_ME,
+  SEARCH_USERS,
+  CHECK_PHONE_NUMBER_EXISTS,
+  CHECK_USERNAME_EXISTS,
+  USER_PROFILE,
+  USER_HABAS,
+  ALLOW_CHANGE_USERNAME,
+  ALLOW_CHANGE_PHONE_NUMBER,
+};
