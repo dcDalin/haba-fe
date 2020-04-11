@@ -45,6 +45,7 @@ const USER_PROFILE = gql`
         displayName
         bio
         profileUrl
+        phoneNumber
       }
     }
   }

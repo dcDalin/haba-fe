@@ -11,9 +11,10 @@ interface Props {
 }
 
 const TopProfile: React.FC<Props> = (props: Props) => {
-  const { id, userName, bio, profileUrl } = props.data.user_profile.user;
+  const { id, userName, displayName, bio, profileUrl, phoneNumber } = props.data.user_profile.user;
   const { authId } = props;
 
+  console.log('Data is: ', props.data.user_profile.user);
   return (
     <Grid className={styles.wrapper} container stackable centered>
       <Grid.Column width={3}>
@@ -26,7 +27,9 @@ const TopProfile: React.FC<Props> = (props: Props) => {
         <p className={styles.bio}>{bio}</p>
       </Grid.Column>
       <Grid.Column floated="left" width={3}>
-        {id === authId && <EditProfileModal />}
+        {id === authId && (
+          <EditProfileModal userName={userName} displayName={displayName} bio={bio} phoneNumber={phoneNumber} />
+        )}
       </Grid.Column>
     </Grid>
   );
