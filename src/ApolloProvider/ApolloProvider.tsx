@@ -11,13 +11,16 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import App from '../App';
 import { jwtTitle } from '../constants';
 
-// get the authentication token from local storage if it exists
-const token = localStorage.getItem(jwtTitle);
-
 const uploadLink = createUploadLink({
   uri: `${process.env.REACT_APP_HABAHABA_URL}/graphql`,
 });
 
+// Pass token in every instance required individually
+// Problem was when I abstracted it into a variable
+// It would retain the old token
+// E.g. if a user logs out and a new one logs in,
+// The previous token would still be active untill a page refresh happens
+// Having them retreived from local storage just before they are used solved the above problem
 const wsLink = new WebSocketLink({
   uri: `${process.env.REACT_APP_HABAHABA_SUBSCRIPTION_URL}/graphql`,
   options: {
@@ -25,7 +28,7 @@ const wsLink = new WebSocketLink({
     connectionParams: (): any => ({
       req: {
         headers: {
-          authorization: token ? `Bearer ${token}` : '',
+          authorization: `Bearer ${localStorage.getItem(jwtTitle)}`,
         },
       },
     }),
@@ -42,6 +45,9 @@ const terminatingLink = split(
 );
 
 const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem(jwtTitle);
+
   // return the headers to the context so uploadLink can read them
   return {
     headers: {

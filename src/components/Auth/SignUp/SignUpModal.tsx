@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
-import { Divider, Button, Form, Icon, Modal } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { Divider, Button, Form, Modal } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { USER_SIGN_UP } from '../../../GraphQl/Mutations/Auth';
@@ -21,6 +21,8 @@ const SignUpModal: React.FC = () => {
   const { closeSignUpModal, isSignUpOpen, openLoginModal } = useContext(AuthModalContext);
 
   const client = useApolloClient();
+
+  const history = useHistory();
 
   const { register, handleSubmit, errors, setValue, triggerValidation } = useForm<FormData>();
 
@@ -79,7 +81,9 @@ const SignUpModal: React.FC = () => {
 
   const [addUser, { loading }] = useMutation(USER_SIGN_UP, {
     update(_, { data }) {
-      setToken(data.user_signUp.token);
+      const { token, userName } = data.user_signUp;
+      setToken(token);
+      history.push(`/${userName}`);
       closeSignUpModal();
     },
     onError(err) {
@@ -191,4 +195,4 @@ const SignUpModal: React.FC = () => {
   );
 };
 
-export default withRouter(SignUpModal);
+export default SignUpModal;
