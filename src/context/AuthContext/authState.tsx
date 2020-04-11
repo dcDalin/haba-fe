@@ -4,7 +4,7 @@ import React, { useReducer } from 'react';
 import { useApolloClient } from '@apollo/react-hooks';
 import authReducer from './authReducer';
 import AuthContext from './authContext';
-import { AUTH_ERROR, USER_LOGOUT, SET_TOKEN, USER_LOADED } from './types';
+import { AUTH_ERROR, USER_LOGOUT, USER_LOADED, SET_TOKEN } from './types';
 import { jwtTitle } from '../../constants';
 import { WHO_IS_ME } from '../../GraphQl/Queries/Auth';
 
@@ -23,7 +23,7 @@ interface FuncResult {
 const AuthState: React.FC = (props: AuthStateProps) => {
   const { children } = props;
 
-  const intialState: FuncResult = {
+  const initialState: FuncResult = {
     token: localStorage.getItem(jwtTitle),
     isAuthenticated: null,
     loading: true,
@@ -31,7 +31,7 @@ const AuthState: React.FC = (props: AuthStateProps) => {
     error: null,
   };
 
-  const [state, dispatch] = useReducer(authReducer, intialState);
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   const client = useApolloClient();
 
@@ -41,7 +41,7 @@ const AuthState: React.FC = (props: AuthStateProps) => {
   // Load User
   const loadUser = async (): Promise<any> => {
     try {
-      const res = await client.query({ query: WHO_IS_ME });
+      const res = await client.query({ query: WHO_IS_ME, fetchPolicy: 'network-only' });
       dispatch({
         type: USER_LOADED,
         payload: res.data.user_me,
@@ -57,6 +57,7 @@ const AuthState: React.FC = (props: AuthStateProps) => {
   // Set OAuth Token
   function setToken(token: string): any {
     localStorage.setItem(jwtTitle, token);
+
     dispatch({
       type: SET_TOKEN,
     });

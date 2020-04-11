@@ -1,36 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useContext } from 'react';
-import { Divider, Button, Form, Icon, Modal, Message } from 'semantic-ui-react';
-import { withRouter, Link } from 'react-router-dom';
+import { Divider, Button, Form, Modal, Message } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { History } from 'history';
 import { useMutation } from '@apollo/react-hooks';
+import { useHistory } from 'react-router-dom';
 import { USER_SIGN_IN } from '../../../GraphQl/Mutations/Auth';
 import AuthContext from '../../../context/AuthContext/authContext';
 import AuthModalContext from '../../../context/AuthModalContext/authModalContext';
 import styles from './Login.module.scss';
 import SignUpModal from '../SignUp/SignUpModal';
 
-interface Props {
-  history: History;
-}
-
 type FormData = {
   phoneNumber: string;
   password: string;
 };
 
-const LoginModal: React.FC<Props> = (props: Props) => {
+const LoginModal: React.FC = () => {
   // Get context stuff
   const { setToken, isAuthenticated } = useContext(AuthContext);
   const { openLoginModal, closeLoginModal, isLoginOpen, openSignUpModal } = useContext(AuthModalContext);
+
+  const history = useHistory();
 
   // use form stuff
   const { register, handleSubmit, errors, setValue, triggerValidation } = useForm<FormData>();
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/');
+      history.push('/');
     }
 
     register(
@@ -51,15 +49,16 @@ const LoginModal: React.FC<Props> = (props: Props) => {
         maxLength: 15,
       },
     );
-  }, [register, isAuthenticated, props.history]);
+  }, [register, isAuthenticated]);
 
   const [genErr, setGenErr] = useState();
   const [visible, setVisible] = useState(false);
 
   const [loginUser, { loading }] = useMutation(USER_SIGN_IN, {
     update(_, { data }) {
-      setToken(data.user_signIn.token);
-      props.history.push('/');
+      const { token, userName } = data.user_signIn;
+      setToken(token);
+      history.push(`/${userName}`);
       closeLoginModal();
     },
     onError(err) {
@@ -170,4 +169,4 @@ const LoginModal: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default withRouter(LoginModal);
+export default LoginModal;

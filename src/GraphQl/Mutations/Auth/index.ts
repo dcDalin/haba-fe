@@ -4,6 +4,7 @@ const USER_SIGN_UP = gql`
   mutation User_signUp($userName: String!, $phoneNumber: String!, $password: String!) {
     user_signUp(userSignUpInput: { userName: $userName, phoneNumber: $phoneNumber, password: $password }) {
       token
+      userName
     }
   }
 `;
@@ -12,6 +13,7 @@ const USER_SIGN_IN = gql`
   mutation User_signIn($phoneNumber: String!, $password: String!) {
     user_signIn(userSignInInput: { phoneNumber: $phoneNumber, password: $password }) {
       token
+      userName
     }
   }
 `;
