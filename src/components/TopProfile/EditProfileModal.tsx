@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect, useContext } from 'react';
-import { Divider, Button, Form, Icon, Modal, Message } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Form, Icon, Modal } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
-import { History } from 'history';
+import { useHistory } from 'react-router-dom';
 import { useMutation, useApolloClient } from '@apollo/react-hooks';
-import AuthContext from '../../context/AuthContext/authContext';
 import { ALLOW_CHANGE_USERNAME, ALLOW_CHANGE_PHONE_NUMBER, WHO_IS_ME } from '../../GraphQl/Queries/Auth';
 import { UPDATE_PROFILE } from '../../GraphQl/Mutations/Auth';
 import styles from './TopProfile.module.scss';
-import { withRouter } from 'react-router-dom';
 
 interface Props {
-  history: History;
+  userName: string;
+  displayName: string;
+  bio: string;
+  phoneNumber: string;
 }
 
 type FormData = {
@@ -22,12 +23,12 @@ type FormData = {
 };
 
 const EditProfileModal: React.FC<Props> = (props: Props) => {
-  const { user, loadUser }: any = useContext(AuthContext);
+  const history = useHistory();
 
-  useEffect(() => {
-    loadUser();
-  }, []);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // use custom loading instead of apollo one due to speed
+  const [loading, setLoading] = useState(false);
 
   const closeModal = (): any => setIsModalOpen(false);
 
@@ -35,13 +36,14 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
 
   const client = useApolloClient();
 
-  console.log('USER IS: ', user);
+  const { userName, displayName, bio, phoneNumber } = props;
 
   const { register, handleSubmit, errors } = useForm<FormData>();
 
-  const [updateProfile, { loading }] = useMutation(UPDATE_PROFILE);
+  const [updateProfile] = useMutation(UPDATE_PROFILE);
 
   const onSubmit = handleSubmit(({ phoneNumber, bio, userName, displayName }) => {
+    setLoading(true);
     updateProfile({
       variables: {
         phoneNumberNew: phoneNumber,
@@ -53,9 +55,13 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
     })
       .then(() => {
         closeModal();
-        props.history.push(`${userName}`);
+        history.push(`${userName}`);
+        setLoading(false);
       })
-      .catch(() => closeModal());
+      .catch(() => {
+        closeModal();
+        setLoading(false);
+      });
   });
 
   return (
@@ -83,7 +89,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
               <input
                 name="userName"
                 placeholder="Username"
-                defaultValue={user.userName}
+                defaultValue={userName}
                 ref={register({
                   required: true,
                   minLength: 3,
@@ -92,7 +98,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
                   validate: async (value: string): Promise<boolean> => {
                     const response = await client.query({
                       query: ALLOW_CHANGE_USERNAME,
-                      variables: { newUserName: value.toLowerCase(), originalUserName: user.userName },
+                      variables: { newUserName: value.toLowerCase(), originalUserName: userName },
                     });
 
                     if (response.data.user_allowChangeUserName) {
@@ -117,7 +123,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
               <input
                 placeholder="Display name"
                 name="displayName"
-                defaultValue={user.displayName}
+                defaultValue={displayName}
                 ref={register({ required: true, minLength: 3, maxLength: 20 })}
               />
               {errors.displayName && errors.displayName.type === 'required' && <p>Display name is required</p>}
@@ -130,7 +136,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
                 type="number"
                 placeholder="254---------"
                 name="phoneNumber"
-                defaultValue={user.phoneNumber}
+                defaultValue={phoneNumber}
                 ref={register({
                   required: true,
                   pattern: /^254/i,
@@ -139,7 +145,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
                   validate: async (value: string): Promise<boolean> => {
                     const response = await client.query({
                       query: ALLOW_CHANGE_PHONE_NUMBER,
-                      variables: { newPhoneNumber: value, originalPhoneNumber: user.phoneNumber },
+                      variables: { newPhoneNumber: value, originalPhoneNumber: phoneNumber },
                     });
 
                     if (response.data.user_allowChangePhoneNumber) {
@@ -157,11 +163,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
             </Form.Field>
             <Form.Field>
               <label>Bio</label>
-              <textarea
-                name="bio"
-                defaultValue={user.bio}
-                ref={register({ minLength: 150, maxLength: 500 })}
-              ></textarea>
+              <textarea name="bio" defaultValue={bio} ref={register({ minLength: 60, maxLength: 400 })}></textarea>
 
               {errors.bio && errors.bio.type === 'minLength' && <p>Your bio is short</p>}
               {errors.bio && errors.bio.type === 'maxLength' && <p>Your bio is long</p>}
@@ -176,4 +178,4 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default withRouter(EditProfileModal);
+export default EditProfileModal;
