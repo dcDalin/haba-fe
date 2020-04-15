@@ -26,7 +26,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
   const { stkPush, loading, error, toastMsg } = useContext(HabaContext);
 
   const { register, handleSubmit, errors } = useForm<FormData>();
-  const [amount, setAmount] = useState(100);
+  const [amount, setAmount] = useState(1);
   const [isPrivate, setIsPrivate] = useState(false);
 
   const onSubmit = (data: any): any => {
