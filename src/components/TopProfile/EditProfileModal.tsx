@@ -163,7 +163,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
             </Form.Field>
             <Form.Field>
               <label>Bio</label>
-              <textarea name="bio" defaultValue={bio} ref={register({ minLength: 60, maxLength: 400 })}></textarea>
+              <textarea name="bio" defaultValue={bio} ref={register({ minLength: 50, maxLength: 400 })}></textarea>
 
               {errors.bio && errors.bio.type === 'minLength' && <p>Your bio is short</p>}
               {errors.bio && errors.bio.type === 'maxLength' && <p>Your bio is long</p>}
