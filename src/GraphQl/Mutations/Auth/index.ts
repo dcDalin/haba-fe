@@ -26,4 +26,10 @@ const UPDATE_PROFILE = gql`
   }
 `;
 
-export { USER_SIGN_UP, USER_SIGN_IN, UPDATE_PROFILE };
+const UPDATE_PROFILE_PIC = gql`
+  mutation User_updateProfilePicture($file: Upload!) {
+    user_updateProfilePicture(file: $file)
+  }
+`;
+
+export { USER_SIGN_UP, USER_SIGN_IN, UPDATE_PROFILE, UPDATE_PROFILE_PIC };
