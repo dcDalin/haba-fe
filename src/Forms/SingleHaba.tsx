@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
-import React, { useState, useContext, useEffect } from 'react';
-import { Segment, Button, Form, Checkbox, Statistic, Label, Popup } from 'semantic-ui-react';
+import React, { useState, useContext } from 'react';
+import { Segment, Button, Form, Checkbox, Label, Popup } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
 import HabaContext from '../context/HabaContext/habaContext';
 import { ToastContainer, toast } from 'react-toastify';
