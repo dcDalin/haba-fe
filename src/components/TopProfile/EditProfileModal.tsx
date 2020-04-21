@@ -93,7 +93,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
                 ref={register({
                   required: true,
                   minLength: 3,
-                  pattern: /^\d+$/,
+                  pattern: /^[\w-_.]*$/,
                   maxLength: 10,
                   validate: async (value: string): Promise<boolean> => {
                     const response = await client.query({
