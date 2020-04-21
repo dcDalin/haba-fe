@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Image, Button, Icon } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import styles from './TopProfile.module.scss';
 import EditProfileModal from './EditProfileModal';
 import UploadProfilePicModal from './UploadProfilePicModal';
@@ -39,7 +39,7 @@ const TopProfile: React.FC<Props> = (props: Props) => {
               height="150"
             />
           ) : (
-            <Image src={profileUrl} alt={userName} className={styles.profileImage} />
+            <img src={profileUrl} alt={userName} className={styles.profileImage} width="150" height="150" />
           )}
 
           <h1 className={styles.userName}>{userName}</h1>

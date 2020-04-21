@@ -36,7 +36,10 @@ const AuthState: React.FC = (props: AuthStateProps) => {
   const client = useApolloClient();
 
   // Logout
-  const logOut = (): any => dispatch({ type: USER_LOGOUT });
+  const logOut = (): any => {
+    dispatch({ type: USER_LOGOUT });
+    client.cache.reset();
+  };
 
   // Load User
   const loadUser = async (): Promise<any> => {

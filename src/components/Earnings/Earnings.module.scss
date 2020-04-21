@@ -1,5 +1,8 @@
 @import '../../scss//variables.scss';
 @import '../../scss//headers.scss';
+@import '../../scss/link.scss';
+@import '../../scss/button.scss';
+@import '../../scss/form.scss';
 
 .statWrapper {
   box-shadow: $boxShadow !important;
@@ -22,6 +25,21 @@
   border: 0px !important;
   box-shadow: $boxShadow !important;
   background-color: rgba($border, 0.3) !important;
+}
+
+.mpesaBtn {
+  margin: 0.5em !important;
+  background-color: transparent !important;
+  box-shadow: $boxShadow !important;
+}
+
+.mpesaImg {
+  padding: 2px !important;
+}
+
+.mpesaText {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  color: $lightBlack !important;
 }
 
 @media only screen and (max-width: 766px) {

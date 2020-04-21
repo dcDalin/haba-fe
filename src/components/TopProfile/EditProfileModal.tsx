@@ -93,7 +93,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
                 ref={register({
                   required: true,
                   minLength: 3,
-                  pattern: /^[\w-_.]*$/,
+                  pattern: /^\d+$/,
                   maxLength: 10,
                   validate: async (value: string): Promise<boolean> => {
                     const response = await client.query({
@@ -136,6 +136,7 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
                 type="number"
                 placeholder="254---------"
                 name="phoneNumber"
+                disabled
                 defaultValue={phoneNumber}
                 ref={register({
                   required: true,
