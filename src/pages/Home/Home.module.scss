@@ -1,3 +1,30 @@
+@import '../../scss/variables.scss';
+
 .homeWrapper {
-  display: flex;
+  margin-top: 2em !important;
+  box-shadow: $boxShadow !important;
+}
+
+.title {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-size: 100px !important;
+  font-weight: 900 !important;
+  padding-top: 0.25em !important;
+  padding-bottom: 2px !important;
+  text-transform: uppercase !important;
+  color: $pink !important;
+}
+
+.desc {
+  border-left: 10px solid $pink !important;
+  padding-left: 10px !important;
+  font-size: 30px !important;
+  color: $purple;
+}
+
+.callToAction {
+  margin-top: 1em !important;
+  background-color: $pink !important;
+  color: rgba(white, 0.8) !important;
+  border: $border !important;
 }

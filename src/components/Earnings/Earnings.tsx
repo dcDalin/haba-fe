@@ -31,13 +31,17 @@ const Earnings: React.FC = () => {
           availableForWithdrawal,
         };
 
-        return {
+        const newTransaction = {
           earnings_userEarnings: {
             ...previousResult.earnings_userEarnings,
             ...newSummary,
             earnings: [...[earnings_transactonChange.earnings], ...previousResult.earnings_userEarnings.earnings],
           },
         };
+
+        console.log(newTransaction);
+
+        return newTransaction;
       },
     });
   };

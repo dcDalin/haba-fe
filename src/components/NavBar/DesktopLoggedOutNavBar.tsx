@@ -20,7 +20,12 @@ const DesktopLoggedOutNavBar: React.FC<Props> = (props: Props) => {
       <Menu fixed="top" secondary className={styles.menu}>
         <Container>
           <Menu.Item style={{ marginLeft: '0px', paddingLeft: '0px' }}>
-            <Menu.Item style={{ marginLeft: '0px', paddingLeft: '0px' }}>
+            <Menu.Item
+              as={Link}
+              to={routes.HOME}
+              className={styles.menuItem}
+              style={{ marginLeft: '0px', paddingLeft: '0px' }}
+            >
               <span className={styles.logoText}>HabaHaba</span>
             </Menu.Item>
           </Menu.Item>
