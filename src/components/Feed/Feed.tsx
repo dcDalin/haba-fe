@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { Comment, Segment, Button } from 'semantic-ui-react';
 import { useParams } from 'react-router-dom';
-import Moment from 'react-moment';
 import { USER_HABAS } from '../../GraphQl/Queries/Auth';
 import { NEW_HABA_SUBSCRIPTION } from '../../GraphQl/Subscriptions/Haba';
 import { useQuery } from '@apollo/react-hooks';
@@ -95,7 +94,7 @@ const Feed: React.FC<Props> = (props: Props) => {
 
               <Comment.Text>{post.fromMessage}</Comment.Text>
               <Comment.Metadata>
-                <span>{post.createdAt}</span>
+                <span>{post.fromNow}</span>
               </Comment.Metadata>
             </Comment.Content>
           </Segment>
