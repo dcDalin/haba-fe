@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { useEffect } from 'react';
 import { Comment, Segment, Button } from 'semantic-ui-react';
+import { useParams } from 'react-router-dom';
+import Moment from 'react-moment';
 import { USER_HABAS } from '../../GraphQl/Queries/Auth';
 import { NEW_HABA_SUBSCRIPTION } from '../../GraphQl/Subscriptions/Haba';
 import { useQuery } from '@apollo/react-hooks';
-import { useParams } from 'react-router-dom';
 import FeedPlaceholder from './FeedPlaceholder';
 
 interface Props {
@@ -52,6 +53,7 @@ const Feed: React.FC<Props> = (props: Props) => {
 
   const { haba, hasNextPage, endCursor } = data.user_profile;
 
+  console.log(haba);
   const loadMoreHabas: any = () => {
     fetchMore({
       // note this is a different query than the one used in the
@@ -93,7 +95,7 @@ const Feed: React.FC<Props> = (props: Props) => {
 
               <Comment.Text>{post.fromMessage}</Comment.Text>
               <Comment.Metadata>
-                <span>{post.date}</span>
+                <span>{post.createdAt}</span>
               </Comment.Metadata>
             </Comment.Content>
           </Segment>

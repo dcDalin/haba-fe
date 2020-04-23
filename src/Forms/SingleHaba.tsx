@@ -148,7 +148,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
             {errors.phoneNumber && errors.phoneNumber.type === 'required' && <p>Phone Number is required</p>}
             {errors.phoneNumber && errors.phoneNumber.type === 'pattern' && <p>Phone Number must start with 254</p>}
             {errors.phoneNumber && errors.phoneNumber.type === 'minLength' && <p>Phone Number is too short</p>}
-            {errors.phoneNumber && errors.phoneNumber.type === 'minLength' && <p>Phone Number is long</p>}
+            {errors.phoneNumber && errors.phoneNumber.type === 'maxLength' && <p>Phone Number is long</p>}
             {/* Hidden input for paytousername */}
 
             <input type="hidden" name="payToUserName" value={userName} />

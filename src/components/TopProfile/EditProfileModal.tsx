@@ -4,7 +4,7 @@ import { Button, Form, Icon, Modal } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useMutation, useApolloClient } from '@apollo/react-hooks';
-import { ALLOW_CHANGE_USERNAME, ALLOW_CHANGE_PHONE_NUMBER, WHO_IS_ME } from '../../GraphQl/Queries/Auth';
+import { ALLOW_CHANGE_USERNAME, WHO_IS_ME } from '../../GraphQl/Queries/Auth';
 import { UPDATE_PROFILE } from '../../GraphQl/Mutations/Auth';
 import styles from './TopProfile.module.scss';
 
@@ -12,11 +12,9 @@ interface Props {
   userName: string;
   displayName: string;
   bio: string;
-  phoneNumber: string;
 }
 
 type FormData = {
-  phoneNumber: string;
   bio: string;
   userName: string;
   displayName: string;
@@ -36,17 +34,16 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
 
   const client = useApolloClient();
 
-  const { userName, displayName, bio, phoneNumber } = props;
+  const { userName, displayName, bio } = props;
 
   const { register, handleSubmit, errors } = useForm<FormData>();
 
   const [updateProfile] = useMutation(UPDATE_PROFILE);
 
-  const onSubmit = handleSubmit(({ phoneNumber, bio, userName, displayName }) => {
+  const onSubmit = handleSubmit(({ bio, userName, displayName }) => {
     setLoading(true);
     updateProfile({
       variables: {
-        phoneNumberNew: phoneNumber,
         bio,
         userName,
         displayName,
@@ -129,38 +126,6 @@ const EditProfileModal: React.FC<Props> = (props: Props) => {
               {errors.displayName && errors.displayName.type === 'required' && <p>Display name is required</p>}
               {errors.displayName && errors.displayName.type === 'minLength' && <p>Display name is too short</p>}
               {errors.displayName && errors.displayName.type === 'maxLength' && <p>Display name is too long</p>}
-            </Form.Field>
-            <Form.Field>
-              <label>Phone number</label>
-              <input
-                type="number"
-                placeholder="254---------"
-                name="phoneNumber"
-                disabled
-                defaultValue={phoneNumber}
-                ref={register({
-                  required: true,
-                  pattern: /^254/i,
-                  minLength: 12,
-                  maxLength: 12,
-                  validate: async (value: string): Promise<boolean> => {
-                    const response = await client.query({
-                      query: ALLOW_CHANGE_PHONE_NUMBER,
-                      variables: { newPhoneNumber: value, originalPhoneNumber: phoneNumber },
-                    });
-
-                    if (response.data.user_allowChangePhoneNumber) {
-                      return false;
-                    }
-                    return true;
-                  },
-                })}
-              />
-              {errors.phoneNumber && errors.phoneNumber.type === 'required' && <p>Phone number is required</p>}
-              {errors.phoneNumber && errors.phoneNumber.type === 'pattern' && <p>Phone number must start with 254</p>}
-              {errors.phoneNumber && errors.phoneNumber.type === 'minLength' && <p>Your phone number seems short</p>}
-              {errors.phoneNumber && errors.phoneNumber.type === 'maxLength' && <p>Your phone number is long</p>}
-              {errors.phoneNumber && errors.phoneNumber.type === 'validate' && <p>Phone number already exists</p>}
             </Form.Field>
             <Form.Field>
               <label>Bio</label>

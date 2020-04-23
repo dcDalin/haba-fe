@@ -19,10 +19,8 @@ const USER_SIGN_IN = gql`
 `;
 
 const UPDATE_PROFILE = gql`
-  mutation User_updateProfile($phoneNumberNew: String!, $bio: String!, $userName: String!, $displayName: String!) {
-    user_updateProfile(
-      userUpdateInput: { phoneNumberNew: $phoneNumberNew, bio: $bio, userName: $userName, displayName: $displayName }
-    )
+  mutation User_updateProfile($bio: String!, $userName: String!, $displayName: String!) {
+    user_updateProfile(userUpdateInput: { bio: $bio, userName: $userName, displayName: $displayName })
   }
 `;
 

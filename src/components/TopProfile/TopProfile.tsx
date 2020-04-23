@@ -12,7 +12,7 @@ interface Props {
 }
 
 const TopProfile: React.FC<Props> = (props: Props) => {
-  const { id, userName, displayName, bio, profileUrl, phoneNumber } = props.data.user_profile.user;
+  const { id, userName, displayName, bio, profileUrl } = props.data.user_profile.user;
   const { authId } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,9 +50,7 @@ const TopProfile: React.FC<Props> = (props: Props) => {
         <p className={styles.bio}>{bio}</p>
       </Grid.Column>
       <Grid.Column floated="left" width={3}>
-        {id === authId && (
-          <EditProfileModal userName={userName} displayName={displayName} bio={bio} phoneNumber={phoneNumber} />
-        )}
+        {id === authId && <EditProfileModal userName={userName} displayName={displayName} bio={bio} />}
       </Grid.Column>
       <UploadProfilePicModal isModalOpen={isModalOpen} closeModal={closeModal} profileUrl={profileUrl} />
     </Grid>
