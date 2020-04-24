@@ -54,7 +54,7 @@ const SearchComponent: React.FC = () => {
       value={value}
       noResultsMessage="User not found &#128546;"
       fluid
-      size="small"
+      size="mini"
     />
   );
 };

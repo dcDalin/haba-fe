@@ -82,7 +82,7 @@ const LoginModal: React.FC = () => {
 
   return (
     <>
-      <Button className={styles.authButton} onClick={openLoginModal}>
+      <Button onClick={openLoginModal} className={styles.authButton}>
         Sign In
       </Button>
 

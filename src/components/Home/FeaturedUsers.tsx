@@ -47,9 +47,6 @@ const FeaturedUsers: React.FC = () => {
       <List animated verticalAlign="middle" size="massive" className={styles.featured}>
         {featuredCreators}
       </List>
-      <Link to={routes.SEARCH} className={styles.subHeading}>
-        Search for more?
-      </Link>
     </>
   );
 };

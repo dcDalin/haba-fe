@@ -37,18 +37,8 @@ const MobileFooterNav: React.FC = () => {
           className={activeItem === 'faq' ? `${styles.bNavActive}` : `${styles.bNav}`}
           onClick={handleItemClick}
         >
-          <Icon name="bus" className={styles.icon} />
+          <Icon name="question" className={styles.icon} />
           FAQ
-        </Menu.Item>
-        <Menu.Item
-          as={Link}
-          to={routes.SEARCH}
-          name="search"
-          className={activeItem === 'search' ? `${styles.bNavActive}` : `${styles.bNav}`}
-          onClick={handleItemClick}
-        >
-          <Icon name="search" className={styles.icon} />
-          Search
         </Menu.Item>
       </Menu>
     </Responsive>

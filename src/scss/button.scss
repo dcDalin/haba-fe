@@ -23,3 +23,10 @@
 .customAuthBtn {
   background-color: #181347 !important;
 }
+
+@media only screen and (max-width: 766px) {
+  .authButton {
+    width: 80px !important;
+    font-size: 12px !important;
+  }
+}

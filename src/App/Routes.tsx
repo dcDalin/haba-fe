@@ -7,7 +7,6 @@ import SetToken from '../components/Auth/SetToken';
 import LogOut from '../components/Auth/LogOut';
 import ScrollToTop from './ScrollToTop';
 import Profile from '../pages/Profile';
-import SearchPage from '../pages/Search';
 import Earnings from '../pages/Earnings';
 
 const Routes: React.FC = () => {
@@ -17,9 +16,7 @@ const Routes: React.FC = () => {
       <Switch>
         <Route path={routes.AUTH} component={SetToken} />
         <Route exact path={routes.PROFILE} component={Profile} />
-        <Route path={routes.SEARCH}>
-          <SearchPage />
-        </Route>
+
         <Route path={routes.FAQ}>
           <FAQ />
         </Route>

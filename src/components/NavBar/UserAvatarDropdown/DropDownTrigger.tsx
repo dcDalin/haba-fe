@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Loader } from 'semantic-ui-react';
+import styles from './DropDown.module.scss';
 
 interface Props {
   loading: boolean;
@@ -12,7 +13,7 @@ const DropDownTrigger: React.FC<Props> = (props: Props) => {
   return (
     <span>
       <Image avatar src={profileUrl} />
-      {username}
+      <span className={styles.userName}>{username}</span>
       <Loader active={loading} size="tiny" />
     </span>
   );
