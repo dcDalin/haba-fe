@@ -2,12 +2,15 @@
 
 .homeWrapper {
   margin-top: 2em !important;
-  box-shadow: $boxShadow !important;
+}
+
+.topWrapper {
+  padding: 1em !important;
 }
 
 .title {
   font-family: 'Nanum Gothic', sans-serif !important;
-  font-size: 100px !important;
+  font-size: 50px !important;
   font-weight: 900 !important;
   padding-top: 0.25em !important;
   padding-bottom: 2px !important;
@@ -18,13 +21,27 @@
 .desc {
   border-left: 10px solid $pink !important;
   padding-left: 10px !important;
-  font-size: 30px !important;
+  font-size: 20px !important;
   color: $purple;
+  font-weight: 100 !important;
 }
 
 .callToAction {
   margin-top: 1em !important;
-  background-color: $pink !important;
-  color: rgba(white, 0.8) !important;
   border: $border !important;
+}
+
+.hr {
+  opacity: 0.2 !important;
+}
+
+.info {
+  padding: 1em !important;
+  align-self: end;
+}
+
+@media only screen and (max-width: 766px) {
+  .info {
+    display: none !important;
+  }
 }

@@ -1,0 +1,28 @@
+@import '../../scss/variables.scss';
+@import '../../scss/headers.scss';
+
+.featured {
+  box-shadow: $boxShadow !important;
+  padding: 1em !important;
+  background-color: rgba($border, 0.1) !important;
+}
+
+.bio {
+  font-size: 18px !important;
+  font-weight: 100 !important;
+}
+
+.featuredListItem {
+  display: flex !important;
+}
+
+@media only screen and (max-width: 766px) {
+  .featured {
+    padding: 0.25em !important;
+    box-shadow: none !important;
+    padding: 0px !important;
+  }
+  .bio {
+    font-size: 14px !important;
+  }
+}

@@ -82,6 +82,16 @@ const USER_HABAS = gql`
   }
 `;
 
+const FEATURED_USERS = gql`
+  query User_featuredUsers {
+    user_featuredUsers {
+      userName
+      profileUrl
+      bio
+    }
+  }
+`;
+
 export {
   WHO_IS_ME,
   SEARCH_USERS,
@@ -91,4 +101,5 @@ export {
   USER_HABAS,
   ALLOW_CHANGE_USERNAME,
   ALLOW_CHANGE_PHONE_NUMBER,
+  FEATURED_USERS,
 };
