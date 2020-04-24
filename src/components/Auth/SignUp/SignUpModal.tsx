@@ -113,7 +113,7 @@ const SignUpModal: React.FC = () => {
         className={styles.customCard}
       >
         <Modal.Content>
-          <h3 className={styles.customFormTitle}>Create a new HabaHaba account</h3>
+          <h3 className={styles.customFormTitle}>Create a new Haba account</h3>
         </Modal.Content>
         <Modal.Content style={{ textAlign: 'center' }}>
           <Form className={styles.customForm} noValidate onSubmit={onSubmit} loading={loading}>
@@ -183,7 +183,7 @@ const SignUpModal: React.FC = () => {
             </Button>
           </Form>
           <Divider />
-          <p className={styles.customBottomText}>By signing up, you agree to HabaHabas Terms of Service.</p>
+          <p className={styles.customBottomText}>By signing up, you agree to Habas Terms of Service.</p>
           <p>
             <Button onClick={openLoginModal} className={styles.customLinkButton}>
               Login instead.

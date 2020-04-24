@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useContext } from 'react';
-import { Divider, Button, Form, Modal, Message } from 'semantic-ui-react';
+import { Divider, Button, Form, Modal, Message, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/react-hooks';
@@ -82,8 +82,9 @@ const LoginModal: React.FC = () => {
 
   return (
     <>
-      <Button onClick={openLoginModal} className={styles.authButton}>
-        Sign In
+      <Button icon onClick={openLoginModal} className={styles.authButton}>
+        <Icon name="sign-in" />
+        <span className={styles.signInText}>&nbsp;Sign In</span>
       </Button>
 
       {/* Sign up modal placed here */}
@@ -99,7 +100,7 @@ const LoginModal: React.FC = () => {
         className={styles.customCard}
       >
         <Modal.Content>
-          <h3 className={styles.customFormTitle}>Login to HabaHaba</h3>
+          <h3 className={styles.customFormTitle}>Login to Haba</h3>
         </Modal.Content>
         <Modal.Content style={{ textAlign: 'center' }}>
           {genErr && visible ? <Message error header="Sorry" content={genErr} onDismiss={handleDismiss} /> : null}
