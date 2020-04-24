@@ -26,8 +26,8 @@ const TopProfile: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <Grid className={styles.wrapper} container stackable centered>
-      <Grid.Column width={3}>
+    <Grid className={styles.wrapper} container centered>
+      <Grid.Column width={4}>
         <div className={styles.leftWrap}>
           {id === authId ? (
             <img
@@ -41,17 +41,18 @@ const TopProfile: React.FC<Props> = (props: Props) => {
           ) : (
             <img src={profileUrl} alt={userName} className={styles.profileImage} width="150" height="150" />
           )}
-
           <h1 className={styles.userName}>{userName}</h1>
         </div>
       </Grid.Column>
-      <Grid.Column floated="right" width={10}>
-        <span className={styles.userName}>{displayName}</span>
+      <Grid.Column floated="right" width={12}>
+        <div className={styles.dispName}>
+          <span className={styles.userName}> {displayName}</span>
+          <span>{id === authId && <EditProfileModal userName={userName} displayName={displayName} bio={bio} />}</span>
+        </div>
+
         <p className={styles.bio}>{bio}</p>
       </Grid.Column>
-      <Grid.Column floated="left" width={3}>
-        {id === authId && <EditProfileModal userName={userName} displayName={displayName} bio={bio} />}
-      </Grid.Column>
+
       <UploadProfilePicModal isModalOpen={isModalOpen} closeModal={closeModal} profileUrl={profileUrl} />
     </Grid>
   );

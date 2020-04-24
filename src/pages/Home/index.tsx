@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { Grid, Button, Icon, List } from 'semantic-ui-react';
 import AuthModalContext from '../../context/AuthModalContext/authModalContext';
+import AuthContext from '../../context/AuthContext/authContext';
 import styles from './Home.module.scss';
 import HomeComponent from '../../components/Home';
 
 const Home: React.FC = () => {
   const { openSignUpModal } = useContext(AuthModalContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   const handleClick = (): any => {
     openSignUpModal();
@@ -18,10 +20,12 @@ const Home: React.FC = () => {
             <h1 className={styles.title}>Haba?</h1>
             <h1 className={styles.desc}>A way to express love and appreciation.</h1>
 
-            <Button icon basic labelPosition="right" size="big" className={styles.callToAction} onClick={handleClick}>
-              Start my page
-              <Icon name="money" />
-            </Button>
+            {!isAuthenticated && (
+              <Button icon basic labelPosition="right" size="big" className={styles.callToAction} onClick={handleClick}>
+                Start my page
+                <Icon name="money" />
+              </Button>
+            )}
           </div>
           <hr className={styles.hr} />
           <div className={styles.info}>
