@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Segment, Button, Form, Checkbox, Statistic, Label, Popup } from 'semantic-ui-react';
+/* eslint-disable eqeqeq */
+import React, { useState, useContext } from 'react';
+import { Segment, Button, Form, Checkbox, Label, Popup } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
 import HabaContext from '../context/HabaContext/habaContext';
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,7 +26,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
   const { stkPush, loading, error, toastMsg } = useContext(HabaContext);
 
   const { register, handleSubmit, errors } = useForm<FormData>();
-  const [amount, setAmount] = useState(50);
+  const [amount, setAmount] = useState(100);
   const [isPrivate, setIsPrivate] = useState(false);
 
   const onSubmit = (data: any): any => {
@@ -74,16 +75,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
         <Form onSubmit={handleSubmit(onSubmit)} loading={loading} className={styles.customForm}>
           <Form.Field>
             <label>Do a Haba</label>
-            <Label
-              circular
-              basic
-              size="big"
-              value="50"
-              onClick={handleClick}
-              className={amount == 50 ? `${styles.active} ${styles.habaAmountLabel}` : `${styles.habaAmountLabel}`}
-            >
-              50
-            </Label>
+
             <Label
               circular
               basic
@@ -156,7 +148,7 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
             {errors.phoneNumber && errors.phoneNumber.type === 'required' && <p>Phone Number is required</p>}
             {errors.phoneNumber && errors.phoneNumber.type === 'pattern' && <p>Phone Number must start with 254</p>}
             {errors.phoneNumber && errors.phoneNumber.type === 'minLength' && <p>Phone Number is too short</p>}
-            {errors.phoneNumber && errors.phoneNumber.type === 'minLength' && <p>Phone Number is long</p>}
+            {errors.phoneNumber && errors.phoneNumber.type === 'maxLength' && <p>Phone Number is long</p>}
             {/* Hidden input for paytousername */}
 
             <input type="hidden" name="payToUserName" value={userName} />

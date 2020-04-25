@@ -18,33 +18,26 @@ const DesktopLoggedOutNavBar: React.FC<Props> = (props: Props) => {
   return (
     <Responsive as={Container} getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
       <Menu fixed="top" secondary className={styles.menu}>
-        <Menu.Item>
-          <Menu.Item as={Link} to={routes.HOME} className={styles.menuItem}>
-            <span className={styles.logoText}>HabaHaba</span>
+        <Container>
+          <Menu.Item style={{ marginLeft: '0px', paddingLeft: '0px' }}>
+            <Menu.Item
+              as={Link}
+              to={routes.HOME}
+              className={styles.menuItem}
+              style={{ marginLeft: '0px', paddingLeft: '0px' }}
+            >
+              <span className={styles.logoText}>HabaHaba</span>
+            </Menu.Item>
           </Menu.Item>
-        </Menu.Item>
-        <Menu.Item>
-          <Search />
-        </Menu.Item>
-        <Menu.Item position="right">
-          <Menu.Item
-            as={Link}
-            to={routes.FAQ}
-            name="faq"
-            className={
-              activeItem === 'faq'
-                ? `${styles.menuItem} ${styles.menuItemItem} ${styles.active}`
-                : `${styles.menuItem} ${styles.menuItemItem}`
-            }
-            onClick={handleItemClick}
-          >
-            FAQ
+          <Menu.Item>
+            <Search />
           </Menu.Item>
-
-          <Menu.Item className={styles.menuItem}>
-            <LoginModal />
+          <Menu.Item position="right" style={{ marginRight: '0px', paddingRight: '0px' }}>
+            <Menu.Item className={styles.menuItem} style={{ marginRight: '0px', paddingRight: '0px' }}>
+              <LoginModal />
+            </Menu.Item>
           </Menu.Item>
-        </Menu.Item>
+        </Container>
       </Menu>
       <div style={{ marginTop: '67px' }}>{children}</div>
     </Responsive>

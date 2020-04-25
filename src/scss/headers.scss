@@ -17,3 +17,9 @@
   color: $lightBlack !important;
   text-transform: uppercase !important;
 }
+
+@media only screen and (max-width: 766px) {
+  .dashHeading {
+    font-size: larger !important;
+  }
+}

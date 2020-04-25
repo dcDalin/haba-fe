@@ -15,3 +15,19 @@
   -ms-transform: translateY(-50%) !important;
   transform: translateY(-50%) !important;
 }
+
+.signInLogo {
+  display: none !important;
+}
+
+@media only screen and (max-width: 766px) {
+  .signInLogo {
+    display: block !important;
+  }
+  .signInText {
+    display: none !important;
+  }
+  .signUp {
+    display: none !important;
+  }
+}

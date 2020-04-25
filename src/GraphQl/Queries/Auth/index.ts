@@ -6,7 +6,9 @@ const WHO_IS_ME = gql`
       id
       userName
       displayName
-      email
+      phoneNumber
+      profileUrl
+      bio
     }
   }
 `;
@@ -17,13 +19,14 @@ const SEARCH_USERS = gql`
       id
       userName
       displayName
+      profileUrl
     }
   }
 `;
 
-const CHECK_EMAIL_EXISTS = gql`
-  query User_userEmailExists($email: String!) {
-    user_userEmailExists(email: $email)
+const CHECK_PHONE_NUMBER_EXISTS = gql`
+  query User_userPhoneNumberExists($phoneNumber: String!) {
+    user_userPhoneNumberExists(phoneNumber: $phoneNumber)
   }
 `;
 
@@ -40,8 +43,23 @@ const USER_PROFILE = gql`
         id
         userName
         displayName
+        bio
+        profileUrl
+        phoneNumber
       }
     }
+  }
+`;
+
+const ALLOW_CHANGE_USERNAME = gql`
+  query User_allowChangeUserName($newUserName: String!, $originalUserName: String!) {
+    user_allowChangeUserName(newUserName: $newUserName, originalUserName: $originalUserName)
+  }
+`;
+
+const ALLOW_CHANGE_PHONE_NUMBER = gql`
+  query User_allowChangePhoneNumber($newPhoneNumber: String!, $originalPhoneNumber: String!) {
+    user_allowChangePhoneNumber(newPhoneNumber: $newPhoneNumber, originalPhoneNumber: $originalPhoneNumber)
   }
 `;
 
@@ -58,9 +76,30 @@ const USER_HABAS = gql`
         fromIsPrivate
         fromAmount
         createdAt
+        fromNow
       }
     }
   }
 `;
 
-export { WHO_IS_ME, SEARCH_USERS, CHECK_EMAIL_EXISTS, CHECK_USERNAME_EXISTS, USER_PROFILE, USER_HABAS };
+const FEATURED_USERS = gql`
+  query User_featuredUsers {
+    user_featuredUsers {
+      userName
+      profileUrl
+      bio
+    }
+  }
+`;
+
+export {
+  WHO_IS_ME,
+  SEARCH_USERS,
+  CHECK_PHONE_NUMBER_EXISTS,
+  CHECK_USERNAME_EXISTS,
+  USER_PROFILE,
+  USER_HABAS,
+  ALLOW_CHANGE_USERNAME,
+  ALLOW_CHANGE_PHONE_NUMBER,
+  FEATURED_USERS,
+};

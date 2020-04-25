@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useApolloClient } from '@apollo/react-hooks';
 import { Search } from 'semantic-ui-react';
-import history from '../../history';
-import styles from './Search.module.scss';
+import { useHistory } from 'react-router-dom';
 import { SEARCH_USERS } from '../../GraphQl/Queries/Auth';
 
 const SearchComponent: React.FC = () => {
   const client = useApolloClient();
+
+  const history = useHistory();
 
   const [isLoading, setIsLoading] = useState(false);
   // Set inital state as loading for better user experience
@@ -31,6 +32,7 @@ const SearchComponent: React.FC = () => {
       const userRes = res.data.user_searchUserName.map((item: any) => ({
         title: item.userName,
         description: item.displayName,
+        image: item.profileUrl,
       }));
 
       setResults(userRes);
@@ -44,15 +46,15 @@ const SearchComponent: React.FC = () => {
   };
   return (
     <Search
+      aligned="right"
       loading={isLoading}
       onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}
       results={results}
       value={value}
       noResultsMessage="User not found &#128546;"
-      size="mini"
       fluid
-      className={styles.searchBar}
+      size="mini"
     />
   );
 };

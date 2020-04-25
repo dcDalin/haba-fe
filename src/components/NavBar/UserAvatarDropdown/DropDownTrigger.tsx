@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import React from 'react';
 import { Image, Loader } from 'semantic-ui-react';
-import { WHO_IS_ME } from '../../../GraphQl/Queries/Auth';
+import styles from './DropDown.module.scss';
 
-const DropDownTrigger: React.FC = () => {
-  const { loading, data } = useQuery(WHO_IS_ME);
-  const { userName, displayName } = data.user_me;
-  const url = null;
-  const [username, setUsername] = useState();
-
-  useEffect(() => {
-    if (username) {
-      setUsername(username);
-    } else {
-      setUsername(displayName);
-    }
-  }, [username]);
+interface Props {
+  loading: boolean;
+  username: string;
+  profileUrl: string;
+}
+const DropDownTrigger: React.FC<Props> = (props: Props) => {
+  const { loading, username, profileUrl } = props;
 
   return (
     <span>
-      <Image avatar src={url} />
-      {userName}
+      <Image avatar src={profileUrl} />
+      <span className={styles.userName}>{username}</span>
       <Loader active={loading} size="tiny" />
     </span>
   );

@@ -10,6 +10,7 @@ const NEW_HABA_SUBSCRIPTION = gql`
       fromIsPrivate
       fromAmount
       createdAt
+      fromNow
     }
   }
 `;

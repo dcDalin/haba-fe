@@ -1,3 +1,47 @@
+@import '../../scss/variables.scss';
+
 .homeWrapper {
-  display: flex;
+  margin-top: 2em !important;
+}
+
+.topWrapper {
+  padding: 1em !important;
+}
+
+.title {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-size: 50px !important;
+  font-weight: 900 !important;
+  padding-top: 0.25em !important;
+  padding-bottom: 2px !important;
+  text-transform: uppercase !important;
+  color: $pink !important;
+}
+
+.desc {
+  border-left: 10px solid $pink !important;
+  padding-left: 10px !important;
+  font-size: 20px !important;
+  color: $purple;
+  font-weight: 100 !important;
+}
+
+.callToAction {
+  margin-top: 1em !important;
+  border: $border !important;
+}
+
+.hr {
+  opacity: 0.2 !important;
+}
+
+.info {
+  padding: 1em !important;
+  align-self: end;
+}
+
+@media only screen and (max-width: 766px) {
+  .info {
+    display: none !important;
+  }
 }

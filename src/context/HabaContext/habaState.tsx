@@ -73,7 +73,7 @@ const AuthState: React.FC = (props: HabaStateProps) => {
 
       const res = await axios({
         method: 'POST',
-        url: `${process.env.REACT_APP_HABAHABA_URL}/pay/stk-pay`,
+        url: `${process.env.REACT_APP_HABAHABA_URL}/pay/stkpay`,
         data: {
           phoneNumber,
           payToUserName,
@@ -87,26 +87,32 @@ const AuthState: React.FC = (props: HabaStateProps) => {
         type: STK_PUSH,
       });
 
-      const { ResponseCode } = res.data;
+      const { status, msg } = res.data;
 
-      if (ResponseCode === '0') {
+      if (status === 'success') {
         dispatch({
           type: STOP_LOADING,
         });
         dispatch({
           type: SHOW_MESSAGE,
-          payload: 'Enter MPesa pin on your phone',
+          payload: 'Check your phone to complete the Haba. Enter your MPesa pin.',
+        });
+        dispatch({
+          type: RESET_STATE,
+        });
+      } else {
+        dispatch({
+          type: STOP_LOADING,
+        });
+        dispatch({
+          type: SHOW_ERROR,
+          payload: msg,
         });
         dispatch({
           type: RESET_STATE,
         });
       }
-      console.log('Res data cancelled is: ', res.data);
-      dispatch({
-        type: STOP_LOADING,
-      });
     } catch (err) {
-      console.log('Error is: ', err);
       dispatch({
         type: SHOW_ERROR,
         payload: 'Could not initiate the payment process. Please try again.',

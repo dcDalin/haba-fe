@@ -16,8 +16,8 @@ export default (state: any, { type, payload, loadPayload }: any): any => {
       return {
         ...state,
         isAuthenticated: false,
-        user: loadPayload,
-        loading: false,
+        user: payload,
+        loading: true,
         error: null,
       };
     case AUTH_ERROR:

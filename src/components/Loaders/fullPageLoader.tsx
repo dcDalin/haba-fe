@@ -1,26 +1,17 @@
-import React, { useContext, useEffect } from 'react';
-import { Loader } from 'semantic-ui-react';
-import AuthContext from '../../context/AuthContext/authContext';
-import './loader.css';
+import React from 'react';
+import { Loader, Segment, Dimmer, Image } from 'semantic-ui-react';
+import styles from './Loader.module.scss';
+import Logo from '../../assets/lynzi.jpeg';
 
-const FullPageLoader: React.FC = () => {
-  const { loadUser, loading } = useContext(AuthContext);
-  console.log('Loading here is: ', loading);
-  useEffect(() => {
-    loadUser();
-  }, []);
-
-  let fullLoader;
-  if (loading) {
-    fullLoader = (
-      <div className="custom-spinner-wrapper">
-        <Loader active inline="centered" className="custom-loading-spinner" size="huge" />
-      </div>
-    );
-  } else {
-    fullLoader = null;
-  }
-  return fullLoader;
-};
+const FullPageLoader: React.FC = () => (
+  <Segment className={styles.segment}>
+    <Dimmer active inverted className={styles.dimmer}>
+      <Image src={Logo} size="tiny" className={styles.image} />
+      <Loader active inline="centered" size="small">
+        <p>Powered by Lynzi</p>
+      </Loader>
+    </Dimmer>
+  </Segment>
+);
 
 export default FullPageLoader;

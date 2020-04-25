@@ -10,11 +10,12 @@ const USER_EARNINGS = gql`
       availableForWithdrawal
       earnings {
         id
-        date
+        createdAt
         transactionType
         amount
         serviceFee
         balance
+        date
       }
     }
   }

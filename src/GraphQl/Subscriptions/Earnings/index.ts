@@ -8,11 +8,12 @@ const NEW_EARNINGS_SUBSCRIPTION = gql`
       availableForWithdrawal
       earnings {
         id
-        date
+        createdAt
         transactionType
         amount
         serviceFee
         balance
+        date
       }
     }
   }

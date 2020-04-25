@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { useEffect } from 'react';
-import { Grid, Label } from 'semantic-ui-react';
 import { useQuery } from '@apollo/react-hooks';
 import { USER_EARNINGS } from '../../GraphQl/Queries/Earnings';
 import styles from './Earnings.module.scss';
@@ -8,6 +7,7 @@ import EarningsSummary from './EarningsSummary';
 import EarningsTable from './EarningsTable';
 import FullPageLoader from '../Loaders/fullPageLoader';
 import { NEW_EARNINGS_SUBSCRIPTION } from '../../GraphQl/Subscriptions/Earnings';
+import MpesaWithdrawalModal from './MpesaWithdrawalModal';
 
 const Earnings: React.FC = () => {
   const { loading, error, data, fetchMore, subscribeToMore } = useQuery(USER_EARNINGS, {
@@ -31,13 +31,17 @@ const Earnings: React.FC = () => {
           availableForWithdrawal,
         };
 
-        return {
+        const newTransaction = {
           earnings_userEarnings: {
             ...previousResult.earnings_userEarnings,
             ...newSummary,
             earnings: [...[earnings_transactonChange.earnings], ...previousResult.earnings_userEarnings.earnings],
           },
         };
+
+        console.log(newTransaction);
+
+        return newTransaction;
       },
     });
   };
@@ -83,15 +87,7 @@ const Earnings: React.FC = () => {
   return (
     <>
       <h2 className={styles.dashHeading}>Earnings</h2>
-      <Grid stackable>
-        <Grid.Column>
-          <span className={styles.dashSubHeading}>WITHDRAW</span>
-          <Label as="a" image size="big">
-            <img src="https://mpasho254.files.wordpress.com/2018/11/mpesa.png" alt="mpesa" />
-            MPesa
-          </Label>
-        </Grid.Column>
-      </Grid>
+      <MpesaWithdrawalModal />
       <EarningsSummary netIncome={netIncome} withdrawn={withdrawn} availableForWithdrawal={availableForWithdrawal} />
 
       <EarningsTable hasNextPage={hasNextPage} loadMoreEarnings={loadMoreEarnings} earnings={earnings} />
