@@ -82,9 +82,12 @@ const LoginModal: React.FC = () => {
 
   return (
     <>
-      <Button icon onClick={openLoginModal} className={styles.authButton}>
-        <Icon name="sign-in" />
+      <Button icon onClick={openLoginModal} basic className={styles.authButton}>
+        <Icon name="sign-in" className={styles.signInLogo} />
         <span className={styles.signInText}>&nbsp;Sign In</span>
+      </Button>
+      <Button onClick={openSignUpModal} className={styles.signUp} basic style={{ marginLeft: '1em' }}>
+        <span className={styles.signInText}>&nbsp;Sign Up</span>
       </Button>
 
       {/* Sign up modal placed here */}

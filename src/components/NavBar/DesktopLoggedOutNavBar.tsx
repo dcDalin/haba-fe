@@ -32,21 +32,7 @@ const DesktopLoggedOutNavBar: React.FC<Props> = (props: Props) => {
           <Menu.Item>
             <Search />
           </Menu.Item>
-          <Menu.Item position="right">
-            <Menu.Item
-              as={Link}
-              to={routes.FAQ}
-              name="faq"
-              className={
-                activeItem === 'faq'
-                  ? `${styles.menuItem} ${styles.menuItemItem} ${styles.active}`
-                  : `${styles.menuItem} ${styles.menuItemItem}`
-              }
-              onClick={handleItemClick}
-            >
-              FAQ
-            </Menu.Item>
-
+          <Menu.Item position="right" style={{ marginRight: '0px', paddingRight: '0px' }}>
             <Menu.Item className={styles.menuItem} style={{ marginRight: '0px', paddingRight: '0px' }}>
               <LoginModal />
             </Menu.Item>
