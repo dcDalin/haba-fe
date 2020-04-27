@@ -6,10 +6,11 @@ import { List, Image } from 'semantic-ui-react';
 import * as routes from '../../Routes';
 import { FEATURED_USERS } from '../../GraphQl/Queries/Auth';
 import styles from './Home.module.scss';
+import FullPageLoader from '../Loaders/fullPageLoader';
 
 const FeaturedUsers: React.FC = () => {
   const { loading, error, data } = useQuery(FEATURED_USERS);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <FullPageLoader />;
   if (error) return <p>Something went wrong</p>;
 
   const { user_featuredUsers } = data;
