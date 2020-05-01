@@ -54,7 +54,7 @@ const SendNewCode: React.FC = () => {
             type="submit"
             className={`${styles.customSuccessButton} ${styles.customAuthBtn}`}
             onClick={handleNewCode}
-            disabled={loading}
+            loading={loading}
           >
             Send Code
           </Button>
