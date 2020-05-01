@@ -30,4 +30,26 @@ const UPDATE_PROFILE_PIC = gql`
   }
 `;
 
-export { USER_SIGN_UP, USER_SIGN_IN, UPDATE_PROFILE, UPDATE_PROFILE_PIC };
+const ENTER_VERIFICATION_CODE = gql`
+  mutation User_enterVerificationCode($verificationCode: String!) {
+    user_enterVerificationCode(verificationCode: $verificationCode)
+  }
+`;
+
+const SEND_NEW_VERIFICATION_CODE = gql`
+  mutation User_sendVerificationCode {
+    user_sendVerificationCode {
+      status
+      message
+    }
+  }
+`;
+
+export {
+  USER_SIGN_UP,
+  USER_SIGN_IN,
+  UPDATE_PROFILE,
+  UPDATE_PROFILE_PIC,
+  ENTER_VERIFICATION_CODE,
+  SEND_NEW_VERIFICATION_CODE,
+};
