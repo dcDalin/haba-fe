@@ -2,12 +2,13 @@
 import { USER_LOADED, AUTH_ERROR, USER_LOGOUT, SET_TOKEN } from './types';
 import { jwtTitle } from '../../constants';
 
-export default (state: any, { type, payload, loadPayload }: any): any => {
+export default (state: any, { type, payload, loadPayload, isVerifiedPayload }: any): any => {
   switch (type) {
     case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
+        isVerified: isVerifiedPayload,
         user: payload,
         loading: loadPayload,
         error: null,
@@ -16,6 +17,7 @@ export default (state: any, { type, payload, loadPayload }: any): any => {
       return {
         ...state,
         isAuthenticated: false,
+        isVerified: true,
         user: payload,
         loading: true,
         error: null,
@@ -24,6 +26,7 @@ export default (state: any, { type, payload, loadPayload }: any): any => {
       return {
         ...state,
         isAuthenticated: false,
+        isVerified: true,
         user: null,
         loading: loadPayload,
         error: payload,
@@ -34,6 +37,7 @@ export default (state: any, { type, payload, loadPayload }: any): any => {
       return {
         ...state,
         isAuthenticated: false,
+        isVerified: true,
         user: null,
         loading: loadPayload,
         error: null,

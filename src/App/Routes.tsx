@@ -10,12 +10,14 @@ import ScrollToTop from './ScrollToTop';
 import Profile from '../pages/Profile';
 import Earnings from '../pages/Earnings';
 import PrivateRoute from '../Routes/ProtectedRoute';
+import VerificationCode from '../components/VerificationCode';
 
 const Routes: React.FC = () => {
   const { isAuthenticated } = useContext(AuthContext);
   return (
     <>
       <ScrollToTop />
+      <VerificationCode />
       <Switch>
         <Route path={routes.AUTH} component={SetToken} />
         <Route exact path={routes.PROFILE} component={Profile} />

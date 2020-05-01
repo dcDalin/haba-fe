@@ -15,6 +15,7 @@ interface AuthStateProps {
 interface FuncResult {
   token: string | null;
   isAuthenticated: boolean | null;
+  isVerified: boolean | null;
   user: object | null;
   loading: boolean;
   error: any;
@@ -26,6 +27,7 @@ const AuthState: React.FC = (props: AuthStateProps) => {
   const initialState: FuncResult = {
     token: localStorage.getItem(jwtTitle),
     isAuthenticated: null,
+    isVerified: null,
     loading: true,
     user: null,
     error: null,
@@ -49,6 +51,7 @@ const AuthState: React.FC = (props: AuthStateProps) => {
         type: USER_LOADED,
         payload: res.data.user_me,
         loadPayload: res.loading,
+        isVerifiedPayload: res.data.user_me.isVerified,
       });
     } catch (err) {
       dispatch({
@@ -72,6 +75,7 @@ const AuthState: React.FC = (props: AuthStateProps) => {
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
+        isVerified: state.isVerified,
         loading: state.loading,
         user: state.user,
         error: state.error,

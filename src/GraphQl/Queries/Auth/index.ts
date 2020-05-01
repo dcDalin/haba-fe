@@ -9,6 +9,7 @@ const WHO_IS_ME = gql`
       phoneNumber
       profileUrl
       bio
+      isVerified
     }
   }
 `;
