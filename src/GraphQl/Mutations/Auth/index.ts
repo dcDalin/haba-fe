@@ -45,6 +45,33 @@ const SEND_NEW_VERIFICATION_CODE = gql`
   }
 `;
 
+const SEND_RESET_PASS_CODE = gql`
+  mutation User_resetPassCode($phoneNumber: String!) {
+    user_resetPassCode(phoneNumber: $phoneNumber) {
+      status
+      message
+    }
+  }
+`;
+
+const CHECK_RESET_PASS_CODE = gql`
+  mutation User_submitResetCode($resetCode: String!, $phoneNumber: String!) {
+    user_submitResetCode(resetCode: $resetCode, phoneNumber: $phoneNumber) {
+      status
+      message
+    }
+  }
+`;
+
+const NEW_PASSWORD = gql`
+  mutation User_newPass($resetCode: String!, $phoneNumber: String!, $password: String!) {
+    user_newPass(resetCode: $resetCode, phoneNumber: $phoneNumber, password: $password) {
+      status
+      message
+    }
+  }
+`;
+
 export {
   USER_SIGN_UP,
   USER_SIGN_IN,
@@ -52,4 +79,7 @@ export {
   UPDATE_PROFILE_PIC,
   ENTER_VERIFICATION_CODE,
   SEND_NEW_VERIFICATION_CODE,
+  SEND_RESET_PASS_CODE,
+  CHECK_RESET_PASS_CODE,
+  NEW_PASSWORD,
 };

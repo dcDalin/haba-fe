@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { Segment, Button, Form, Checkbox, Label, Popup } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
 import HabaContext from '../context/HabaContext/habaContext';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './SingleHaba.module.scss';
 
@@ -183,7 +183,6 @@ const SingleHaba: React.FC<Props> = (props: Props) => {
             Haba
           </Button>
         </Form>
-        <ToastContainer />
       </Segment>
     </>
   );
