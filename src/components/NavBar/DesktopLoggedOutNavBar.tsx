@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Responsive, Menu, Container } from 'semantic-ui-react';
 import getWidth from '../../utils/getWidth';
-import ActiveNavContext from '../../context/ActiveNavContext/activeNavContext';
 import * as routes from '../../Routes';
 import Search from '../Search';
 import styles from './NavBar.module.scss';
@@ -14,7 +13,6 @@ export interface Props {
 
 const DesktopLoggedOutNavBar: React.FC<Props> = (props: Props) => {
   const { children } = props;
-  const { activeItem, handleItemClick } = useContext(ActiveNavContext);
   return (
     <Responsive as={Container} getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
       <Menu fixed="top" secondary className={styles.menu}>
@@ -26,7 +24,7 @@ const DesktopLoggedOutNavBar: React.FC<Props> = (props: Props) => {
               className={styles.menuItem}
               style={{ marginLeft: '0px', paddingLeft: '0px' }}
             >
-              <span className={styles.logoText}>HabaHaba</span>
+              <span className={styles.logoText}>gohaba</span>
             </Menu.Item>
           </Menu.Item>
           <Menu.Item>
