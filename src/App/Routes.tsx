@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import AuthContext from '../context/AuthContext/authContext';
 import * as routes from '../Routes';
 import Home from '../pages/Home';
@@ -18,6 +19,7 @@ const Routes: React.FC = () => {
     <>
       <ScrollToTop />
       <VerificationCode />
+      <ToastContainer />
       <Switch>
         <Route path={routes.AUTH} component={SetToken} />
         <Route exact path={routes.PROFILE} component={Profile} />

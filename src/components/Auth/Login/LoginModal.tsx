@@ -10,6 +10,7 @@ import AuthContext from '../../../context/AuthContext/authContext';
 import AuthModalContext from '../../../context/AuthModalContext/authModalContext';
 import styles from './Login.module.scss';
 import SignUpModal from '../SignUp/SignUpModal';
+import ResetPassModal from '../ResetPass';
 
 type FormData = {
   phoneNumber: string;
@@ -19,7 +20,9 @@ type FormData = {
 const LoginModal: React.FC = () => {
   // Get context stuff
   const { setToken, isAuthenticated } = useContext(AuthContext);
-  const { openLoginModal, closeLoginModal, isLoginOpen, openSignUpModal } = useContext(AuthModalContext);
+  const { openLoginModal, closeLoginModal, isLoginOpen, openSignUpModal, openResetPassModal } = useContext(
+    AuthModalContext,
+  );
 
   const history = useHistory();
 
@@ -149,10 +152,9 @@ const LoginModal: React.FC = () => {
             )}
             {errors.password && errors.password.type === 'maxLength' && <p>Password is too long</p>}
             <br />
-            <Link to="/forgotpass" className={styles.customLink}>
+            <Button className={styles.customLinkButton} onClick={openResetPassModal}>
               Forgot your password?
-            </Link>
-
+            </Button>
             <Divider />
             <Button type="submit" className={`${styles.customSuccessButton} ${styles.customAuthBtn}`}>
               Log in
@@ -169,6 +171,7 @@ const LoginModal: React.FC = () => {
           </p>
         </Modal.Content>
       </Modal>
+      <ResetPassModal />
     </>
   );
 };

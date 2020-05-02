@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Modal, Form, Button } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from 'react-hook-form';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { ENTER_VERIFICATION_CODE } from '../../GraphQl/Mutations/Auth';
 import AuthContext from '../../context/AuthContext/authContext';
 import styles from './VerificationCode.module.scss';
@@ -61,15 +61,13 @@ const VerificationCode: React.FC = () => {
             <Form.Field>
               <label>Code</label>
               <input
-                type="number"
-                placeholder="1234"
+                type="text"
                 name="verificationCode"
-                ref={register({ required: true, pattern: /^[\d]*$/, minLength: 4, maxLength: 4 })}
+                ref={register({ required: true, minLength: 4, maxLength: 4 })}
               />
               {errors.verificationCode && errors.verificationCode.type === 'required' && (
                 <p>Verification code is required</p>
               )}
-              {errors.verificationCode && errors.verificationCode.type === 'pattern' && <p>Invalid code</p>}
               {errors.verificationCode && errors.verificationCode.type === 'minLength' && <p>Code is too short</p>}
               {errors.verificationCode && errors.verificationCode.type === 'maxLength' && <p>Code is long</p>}
             </Form.Field>
@@ -83,7 +81,6 @@ const VerificationCode: React.FC = () => {
           <SendNewCode />
         </Modal.Content>
       </Modal>
-      <ToastContainer />
     </>
   );
 };

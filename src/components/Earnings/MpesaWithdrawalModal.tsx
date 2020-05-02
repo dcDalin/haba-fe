@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Grid, Label, Form } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
 import { INITIATE_MPESA_WITHDRAWAL } from '../../GraphQl/Mutations/Earnings';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import styles from './Earnings.module.scss';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -101,7 +101,6 @@ const MpesaWithdrawalModal: React.FC = () => {
           </Modal.Content>
         </Modal>
       </Grid>
-      <ToastContainer />
     </>
   );
 };

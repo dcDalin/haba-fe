@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import styles from './TopProfile.module.scss';
 import { UPDATE_PROFILE_PIC } from '../../GraphQl/Mutations/Auth';
 import { WHO_IS_ME } from '../../GraphQl/Queries/Auth';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 interface Props {
   isModalOpen: boolean;
@@ -81,7 +81,6 @@ const UploadProfilePicModal: React.FC<Props> = ({ isModalOpen, closeModal, profi
           </Button>
         </Modal.Content>
       </Modal>
-      <ToastContainer />
     </>
   );
 };
