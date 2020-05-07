@@ -1,5 +1,5 @@
 [context.production.environment]
-  REACT_APP_HABAHABA_URL = "https://gohaba-prod.herokuapp.com"
+  REACT_APP_HABAHABA_URL = "https://be.gohaba.com"
   REACT_APP_HABAHABA_SUBSCRIPTION_URL = "wss://gohaba-prod.herokuapp.com"
 
 [context.develop.environment]
