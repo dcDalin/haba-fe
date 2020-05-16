@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Responsive, Menu, Image } from 'semantic-ui-react';
+import { Responsive, Menu } from 'semantic-ui-react';
 import getWidth from '../../utils/getWidth';
 import * as routes from '../../Routes';
 import MobileFooterNav from './MobileFooterNav';
 import Search from '../Search';
 import LoginModal from '../Auth/Login';
 import styles from './NavBar.module.scss';
-import PinkLogo from '../../assets/pink.png';
+import PinkLogo from '../../assets/lynzi.png';
 
 export interface Props {
   children: React.ReactNode;
