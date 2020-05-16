@@ -43,11 +43,13 @@
 }
 
 .logoText {
-  font-family: 'Open Sans', sans-serif !important;
-  font-weight: 800 !important;
-  font-size: larger !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 30px !important;
   color: $primary-color !important;
   padding-left: 0px !important;
+  border-right: 5px solid $pink !important;
+  letter-spacing: 2px !important;
 }
 
 .footerMenu {

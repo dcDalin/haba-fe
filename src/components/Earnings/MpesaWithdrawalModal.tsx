@@ -85,7 +85,7 @@ const MpesaWithdrawalModal: React.FC = () => {
                   ref={register({
                     required: true,
                     pattern: /^[\d]*$/,
-                    min: 100,
+                    min: 1,
                     max: 70000,
                   })}
                 />
