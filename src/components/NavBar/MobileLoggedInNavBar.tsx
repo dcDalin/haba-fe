@@ -8,7 +8,7 @@ import MobileFooterNav from './MobileFooterNav';
 import Search from '../Search';
 import UserAvatarDropdown from './UserAvatarDropdown';
 import styles from './NavBar.module.scss';
-import PinkLogo from '../../assets/pink.png';
+import PinkLogo from '../../assets/lynzi.png';
 
 export interface Props {
   children: React.ReactNode;
