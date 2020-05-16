@@ -19,7 +19,7 @@ const MobileLoggedOutNavBar: React.FC<Props> = (props: Props) => {
   return (
     <>
       <Responsive getWidth={getWidth} maxWidth={Responsive.onlyMobile.maxWidth}>
-        <Menu secondary className={styles.mobileMenu} size="huge">
+        <Menu secondary className={styles.mobileMenu} size="large">
           <Menu.Item as={Link} to={routes.HOME}>
             <img src={PinkLogo} alt="logo" width="100" />
           </Menu.Item>
