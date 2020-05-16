@@ -183,7 +183,7 @@ const SignUpModal: React.FC = () => {
             </Button>
           </Form>
           <Divider />
-          <p className={styles.customBottomText}>By signing up, you agree to Habas Terms of Service.</p>
+          <p className={styles.customBottomText}>By signing up, you agree to Haba`&apos;s Terms of Service.</p>
           <p>
             <Button onClick={openLoginModal} className={styles.customLinkButton}>
               Login instead.

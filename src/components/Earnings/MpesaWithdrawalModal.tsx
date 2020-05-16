@@ -85,12 +85,12 @@ const MpesaWithdrawalModal: React.FC = () => {
                   ref={register({
                     required: true,
                     pattern: /^[\d]*$/,
-                    min: 1,
+                    min: 250,
                     max: 70000,
                   })}
                 />
                 {errors.amount && errors.amount.type === 'required' && <p>Amount is required</p>}
-                {errors.amount && errors.amount.type === 'min' && <p>You can withdraw a minimum of 100</p>}
+                {errors.amount && errors.amount.type === 'min' && <p>You can withdraw a minimum of 250</p>}
                 {errors.amount && errors.amount.type === 'max' && <p>Maximum withdrawal amount is 70,000</p>}
                 {errors.amount && errors.amount.type === 'pattern' && <p>Amount is invalid</p>}
               </Form.Field>
