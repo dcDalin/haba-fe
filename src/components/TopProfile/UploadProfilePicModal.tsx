@@ -13,11 +13,21 @@ interface Props {
   profileUrl: string;
 }
 
-const UploadProfilePicModal: React.FC<Props> = ({ isModalOpen, closeModal, profileUrl }: Props) => {
+const UploadProfilePicModal: React.FC<Props> = ({ isModalOpen, closeModal }: Props) => {
   const [src, setSrc] = useState();
   const [image, setImage] = useState(null);
 
-  const [editProfilePic, { loading }] = useMutation(UPDATE_PROFILE_PIC);
+  const [editProfilePic, { loading }] = useMutation(UPDATE_PROFILE_PIC, {
+    update() {
+      closeModal();
+    },
+    onError(err) {
+      console.log(err);
+      toast.error('Something went wrong, please try again later.', {
+        position: toast.POSITION.TOP_LEFT,
+      });
+    },
+  });
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const reader: any = new FileReader();
@@ -29,17 +39,11 @@ const UploadProfilePicModal: React.FC<Props> = ({ isModalOpen, closeModal, profi
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const uploadProfile = (): any => {
+    console.log(image);
     editProfilePic({
       variables: { file: image },
       refetchQueries: [{ query: WHO_IS_ME }],
-    })
-      .then(() => closeModal())
-      .catch(err => {
-        closeModal();
-        toast.error(err, {
-          position: toast.POSITION.TOP_LEFT,
-        });
-      });
+    });
   };
 
   return (
@@ -59,7 +63,7 @@ const UploadProfilePicModal: React.FC<Props> = ({ isModalOpen, closeModal, profi
         </Modal.Content>
         <Modal.Content image style={{ textAlign: 'center', margin: 'auto' }}>
           <Modal.Description>
-            <div {...getRootProps()} style={{ padding: '1em' }}>
+            <div {...getRootProps()} style={{ padding: '0.5em' }}>
               <input {...getInputProps()} accept="image/png, image/jpeg" />
               <Button basic color="black" disabled={loading}>
                 <Icon name="photo" />

@@ -81,7 +81,7 @@ const MpesaWithdrawalModal: React.FC = () => {
                 <input
                   name="amount"
                   type="number"
-                  placeholder="100"
+                  placeholder="250"
                   ref={register({
                     required: true,
                     pattern: /^[\d]*$/,
