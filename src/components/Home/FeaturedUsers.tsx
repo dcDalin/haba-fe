@@ -36,14 +36,14 @@ const FeaturedUsers: React.FC = () => {
     featuredCreators = (
       <List.Item>
         <List.Content>
-          <List.Description className={styles.bio}>No featured creators</List.Description>
+          <List.Description className={styles.bio}>No featured accounts</List.Description>
         </List.Content>
       </List.Item>
     );
   }
   return (
     <>
-      <h1 className={styles.dashHeading}>Featured Creators</h1>
+      <h1 className={styles.dashHeading}>Featured Accounts</h1>
 
       <List animated verticalAlign="middle" size="massive" className={styles.featured}>
         {featuredCreators}
