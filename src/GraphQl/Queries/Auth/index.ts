@@ -76,8 +76,9 @@ const USER_HABAS = gql`
         fromMessage
         fromIsPrivate
         fromAmount
-        createdAt
+        reply
         fromNow
+        fromUpdate
       }
     }
   }
