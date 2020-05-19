@@ -1,0 +1,10 @@
+@import '../../scss//variables.scss';
+@import '../../scss//headers.scss';
+@import '../../scss/link.scss';
+@import '../../scss/button.scss';
+@import '../../scss/form.scss';
+
+.reply {
+  box-shadow: $boxShadow;
+  padding: 0.5em !important;
+}

@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Comment, Segment, Button } from 'semantic-ui-react';
 import { useParams } from 'react-router-dom';
 import { USER_HABAS } from '../../GraphQl/Queries/Auth';
 import { NEW_HABA_SUBSCRIPTION } from '../../GraphQl/Subscriptions/Haba';
 import { useQuery } from '@apollo/react-hooks';
 import FeedPlaceholder from './FeedPlaceholder';
+import styles from './Feed.module.scss';
+import FeedCommentModal from './FeedCommentModal';
+import AuthContext from '../../context/AuthContext/authContext';
 
 interface Props {
   userId: string;
@@ -13,6 +16,8 @@ interface Props {
 
 const Feed: React.FC<Props> = (props: Props) => {
   const { userName }: any = useParams();
+
+  const { user }: any = useContext(AuthContext);
 
   const { userId } = props;
 
@@ -97,6 +102,22 @@ const Feed: React.FC<Props> = (props: Props) => {
                 <span>{post.fromNow}</span>
               </Comment.Metadata>
             </Comment.Content>
+            <Comment.Group>
+              {post.reply && (
+                <Comment>
+                  <Comment.Content className={styles.reply}>
+                    <Comment.Author as="a">{userName}</Comment.Author>
+                    <Comment.Metadata>
+                      <div>{post.fromUpdate}</div>
+                    </Comment.Metadata>
+                    <Comment.Text>{post.reply}</Comment.Text>
+                  </Comment.Content>
+                </Comment>
+              )}
+            </Comment.Group>
+            {user && user.id === userId && (
+              <FeedCommentModal habaId={post.id} origReply={post.reply} userName={userName} />
+            )}
           </Segment>
         </Comment>
       </Comment.Group>
