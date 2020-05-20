@@ -4,6 +4,8 @@ import AuthModalContext from '../../context/AuthModalContext/authModalContext';
 import AuthContext from '../../context/AuthContext/authContext';
 import styles from './Home.module.scss';
 import HomeComponent from '../../components/Home';
+// @ts-ignore
+import AdSense from 'react-adsense';
 
 const Home: React.FC = () => {
   const { openSignUpModal } = useContext(AuthModalContext);
@@ -28,6 +30,7 @@ const Home: React.FC = () => {
             )}
           </div>
           <hr className={styles.hr} />
+          <AdSense.Google client="ca-pub-2361896733949876" slot="7806394673" />
           <div className={styles.info}>
             <List>
               <List.Item>
