@@ -105,7 +105,7 @@ const Feed: React.FC<Props> = (props: Props) => {
             <Comment.Group>
               {post.reply && (
                 <Comment>
-                  <Comment.Avatar src={profileUrl} />
+                  <Comment.Avatar src={profileUrl} className={styles.avatar} />
                   <Comment.Content className={styles.reply}>
                     <Comment.Author as="a">{userName}</Comment.Author>
                     <Comment.Metadata>
