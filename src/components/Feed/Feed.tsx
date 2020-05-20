@@ -12,6 +12,7 @@ import AuthContext from '../../context/AuthContext/authContext';
 
 interface Props {
   userId: string;
+  profileUrl: string;
 }
 
 const Feed: React.FC<Props> = (props: Props) => {
@@ -19,7 +20,7 @@ const Feed: React.FC<Props> = (props: Props) => {
 
   const { user }: any = useContext(AuthContext);
 
-  const { userId } = props;
+  const { userId, profileUrl } = props;
 
   const { loading, error, data, fetchMore, subscribeToMore } = useQuery(USER_HABAS, {
     variables: { userName, cursor: '', limit: 10 },
@@ -57,7 +58,6 @@ const Feed: React.FC<Props> = (props: Props) => {
 
   const { haba, hasNextPage, endCursor } = data.user_profile;
 
-  console.log(haba);
   const loadMoreHabas: any = () => {
     fetchMore({
       // note this is a different query than the one used in the
@@ -105,6 +105,7 @@ const Feed: React.FC<Props> = (props: Props) => {
             <Comment.Group>
               {post.reply && (
                 <Comment>
+                  <Comment.Avatar src={profileUrl} />
                   <Comment.Content className={styles.reply}>
                     <Comment.Author as="a">{userName}</Comment.Author>
                     <Comment.Metadata>

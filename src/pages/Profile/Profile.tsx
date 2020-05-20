@@ -29,7 +29,7 @@ const Profile: React.FC = () => {
   if (error) return <p>User profile not found</p>;
 
   // Get user id from USER_PROFILE query
-  const { id } = data.user_profile.user;
+  const { id, profileUrl } = data.user_profile.user;
 
   // Get id from logged in user context
   // When user is loggeed out, user from context is null
@@ -49,7 +49,7 @@ const Profile: React.FC = () => {
       menuItem: 'View Habas',
       render: (): any => (
         <Tab.Pane attached={false} className={styles.tab}>
-          <FeedWrapper userId={id} />
+          <FeedWrapper userId={id} profileUrl={profileUrl} />
         </Tab.Pane>
       ),
     },
@@ -69,7 +69,7 @@ const Profile: React.FC = () => {
               </Sticky>
             </Grid.Column>
             <Grid.Column>
-              <FeedWrapper userId={id} />
+              <FeedWrapper userId={id} profileUrl={profileUrl} />
             </Grid.Column>
           </Grid.Row>
         </Ref>
