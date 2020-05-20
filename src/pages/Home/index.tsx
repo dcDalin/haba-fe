@@ -6,6 +6,7 @@ import styles from './Home.module.scss';
 import HomeComponent from '../../components/Home';
 // @ts-ignore
 import AdSense from 'react-adsense';
+import CarouselInfo from '../../components/Home/CarouselInfo';
 
 const Home: React.FC = () => {
   const { openSignUpModal } = useContext(AuthModalContext);
@@ -30,6 +31,7 @@ const Home: React.FC = () => {
             )}
           </div>
           <hr className={styles.hr} />
+          <CarouselInfo />
           <AdSense.Google client="ca-pub-2361896733949876" slot="7806394673" />
           <div className={styles.info}>
             <List>
