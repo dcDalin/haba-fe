@@ -32,7 +32,6 @@ const Home: React.FC = () => {
           </div>
           <hr className={styles.hr} />
           <CarouselInfo />
-          <AdSense.Google client="ca-pub-2361896733949876" slot="7806394673" />
           <div className={styles.info}>
             <List>
               <List.Item>
