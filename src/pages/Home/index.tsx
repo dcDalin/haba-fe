@@ -4,9 +4,7 @@ import AuthModalContext from '../../context/AuthModalContext/authModalContext';
 import AuthContext from '../../context/AuthContext/authContext';
 import styles from './Home.module.scss';
 import HomeComponent from '../../components/Home';
-// @ts-ignore
-import AdSense from 'react-adsense';
-import CarouselInfo from '../../components/Home/CarouselInfo';
+import RecentHabas from '../../components/Home/RecentHabas';
 
 const Home: React.FC = () => {
   const { openSignUpModal } = useContext(AuthModalContext);
@@ -31,7 +29,7 @@ const Home: React.FC = () => {
             )}
           </div>
           <hr className={styles.hr} />
-          <CarouselInfo />
+          <RecentHabas />
           <div className={styles.info}>
             <List>
               <List.Item>
@@ -45,7 +43,7 @@ const Home: React.FC = () => {
               <List.Item>
                 <List.Icon name="mail" />
                 <List.Content>
-                  <a href="admin:info@slynzi">info@lynzi.com</a>
+                  <a href="admin:info@slynzi">info@lynzillc.com</a>
                 </List.Content>
               </List.Item>
             </List>
