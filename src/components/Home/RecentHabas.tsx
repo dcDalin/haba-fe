@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Comment, Header } from 'semantic-ui-react';
 import { GET_RECENT_HABAS } from '../../GraphQl/Queries/Haba';
 import { useQuery } from '@apollo/react-hooks';
+import styles from './Home.module.scss';
 
 const RecentHabas: React.FC = () => {
   const { loading, error, data } = useQuery(GET_RECENT_HABAS);
@@ -13,7 +14,7 @@ const RecentHabas: React.FC = () => {
   const habas = data.haba_recentHabas.map((haba: any) => {
     console.log(haba);
     return (
-      <Comment key={haba.id}>
+      <Comment key={haba.id} className={styles.featured}>
         <Comment.Content>
           <Comment.Author as="a">{haba.fromName}</Comment.Author>
           &nbsp; did a <span>{haba.fromAmount}</span> HABA on{' '}
