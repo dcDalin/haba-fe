@@ -46,7 +46,7 @@ const RecentHabas: React.FC = () => {
 
   return (
     <Comment.Group size="big">
-      <Header as="h3">Recent Habas</Header>
+      <h2 className={styles.dashHeading}>Recent Habas</h2>
 
       {habas}
     </Comment.Group>
