@@ -27,7 +27,7 @@ const RecentHabas: React.FC = () => {
         {haba.reply && (
           <Comment.Group>
             <Comment>
-              <Comment.Avatar as="a" src={haba.user.profileUrl} />
+              <Comment.Avatar as="a" src={haba.user.profileUrl} className={styles.avatar} />
               <Comment.Content>
                 <Comment.Author as={Link} to={`${haba.user.userName}`}>
                   {haba.user.userName}

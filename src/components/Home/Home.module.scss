@@ -16,6 +16,11 @@
   display: flex !important;
 }
 
+.avatar {
+  height: 40px !important;
+  width: 40px !important;
+}
+
 @media only screen and (max-width: 766px) {
   .featured {
     padding: 0.25em !important;
